@@ -1,0 +1,11 @@
+{
+    "timeseriesId": "custom:releaseevaluationscore",
+    "displayName": "Release Evaluation Score",
+    "dimensions": ["Score", "Result", "Passed", "Releaseversion", "Buildversion", "Buildnumber", "Evaluationtime", "Application"],
+    "aggregationTypes": ["AVG", "SUM", "MIN", "MAX"],
+    "unit": "Unspecified",
+    "filter": "CUSTOM",
+    "detailedSource": "API",
+    "types": ["test"],
+    "warnings": []
+}

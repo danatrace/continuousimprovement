@@ -1,0 +1,72 @@
+{
+ "description": "",
+ "dimensionalRules": [],
+ "entitySelectorBasedRules": [],
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "name": "{{.name}}",
+ "rules": [
+  {
+   "conditions": [
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "ENVIRONMENT",
+       "key": "keptn_stage",
+       "value": "staging"
+      }
+     },
+     "key": {
+      "attribute": "SERVICE_TAGS",
+      "type": "STATIC"
+     }
+    },
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "ENVIRONMENT",
+       "key": "keptn_project",
+       "value": "slo-evaluation"
+      }
+     },
+     "key": {
+      "attribute": "SERVICE_TAGS",
+      "type": "STATIC"
+     }
+    },
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "ENVIRONMENT",
+       "key": "keptn_service",
+       "value": "tnt-acer-svc"
+      }
+     },
+     "key": {
+      "attribute": "SERVICE_TAGS",
+      "type": "STATIC"
+     }
+    }
+   ],
+   "enabled": true,
+   "propagationTypes": [
+    "SERVICE_TO_HOST_LIKE",
+    "SERVICE_TO_PROCESS_GROUP_LIKE"
+   ],
+   "type": "SERVICE"
+  }
+ ]
+}

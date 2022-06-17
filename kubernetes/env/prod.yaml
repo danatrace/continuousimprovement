@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: simplenodeservice-prod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplenode
+  namespace: simplenodeservice-prod
+  labels:
+    app: simplenode
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxUnavailable: "25%"
+      maxSurge: "25%"
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: simplenode
+  template:
+    metadata:
+      labels:
+        app: simplenode
+    spec:
+      containers:
+      - name: tnt-acer-svc
+        image: "docker.io/${dockertag}:${ct_version}"
+        imagePullPolicy: Always 
+        ports:
+        - name: http
+          protocol: TCP
+          containerPort: 8080
+        env:
+        - name: DT_TAGS
+          value: "application=slo-evaluation keptn_project=slo-evaluation keptn_service=tnt-acer-svc keptn_stage=prod"
+        - name: DT_CUSTOM_PROP
+          value: "keptn_project=slo-evaluation keptn_service=tnt-acer-svc keptn_stage=prod release_namespace=simplenodeservice-prod"
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: "metadata.name"
+        - name: DEPLOYMENT_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: "metadata.labels['deployment']"
+        - name: CONTAINER_IMAGE
+          value: "docker.io/danatrace/simplenodeservice:${ct_version}"
+        - name: KEPTN_PROJECT
+          value: "slo-evaluation"
+        - name: KEPTN_STAGE
+          value: "production"
+        - name: KEPTN_SERVICE
+          value: "tnt-acer-svc"
+        - name: BUILD_VERSION
+          value: "${ct_version}"
+        - name: DT_RELEASE_VERSION
+          value: "${build_version}"
+        - name: DT_RELEASE_BUILD_VERSION
+          value: "${ct_version}"
+        - name: DT_RELEASE_PRODUCT
+          value: "simplenoderservice"
+        - name: DT_RELEASE_STAGE
+          value: "production"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 15
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+           cpu: 100m
+           memory: 128Mi
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  name: simplenode
+  namespace: simplenodeservice-prod
+spec: 
+  type: LoadBalancer
+  ports: 
+  - name: http
+    port: 8002
+    protocol: TCP
+    targetPort: 8080
+  selector: 
+    app: simplenode

@@ -1,0 +1,16 @@
+config:
+- ReleaseTrends: ReleaseTrends.json
+- KQGprojectslo-evaluationstagestagingservicetnt-acer-svc: KQGprojectslo-evaluationstagestagingservicetnt-acer-svc.json
+- KQGprojectslo-evaluationstagedevservicetnt-acer-svc: KQGprojectslo-evaluationstagedevservicetnt-acer-svc.json
+- KQGprojectslo-evaluationstageproductionservicetnt-acer-svc: KQGprojectslo-evaluationstageproductionservicetnt-acer-svc.json
+- KQGprojectdeployment-gatesstageproductionservicetnt-acer-svc: KQGprojectdeployment-gatesstageproductionservicetnt-acer-svc.json
+KQGprojectdeployment-gatesstageproductionservicetnt-acer-svc:
+- name: KQG;project=deployment-gates;stage=production;service=tnt-acer-svc
+KQGprojectslo-evaluationstagedevservicetnt-acer-svc:
+- name: KQG;project=slo-evaluation;stage=dev;service=tnt-acer-svc
+KQGprojectslo-evaluationstageproductionservicetnt-acer-svc:
+- name: KQG;project=slo-evaluation;stage=production;service=tnt-acer-svc
+KQGprojectslo-evaluationstagestagingservicetnt-acer-svc:
+- name: KQG;project=slo-evaluation;stage=staging;service=tnt-acer-svc
+ReleaseTrends:
+- name: Release Trends

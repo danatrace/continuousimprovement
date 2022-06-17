@@ -1,0 +1,11 @@
+{
+ "acceptAnyCertificate": true,
+ "active": true,
+ "alertingProfile": "a7d0cef6-f67c-3146-a4c3-b0d2d66b302b",
+ "headers": [],
+ "name": "{{.name}}",
+ "notifyEventMergesEnabled": false,
+ "payload": "{\"title\": \"{ProblemTitle}\",\n\"problemId\": \"{PID}\",\n\"impact\": \"{ImpactedEntity}\"\n}",
+ "type": "WEBHOOK",
+ "url": "https://dynatrace.njinn.io/api/v1/hooks/run/89b7c68a9f62-47ce-a35d-2b31e13d5b3e"
+}

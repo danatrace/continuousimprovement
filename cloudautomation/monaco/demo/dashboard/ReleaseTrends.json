@@ -1,0 +1,1555 @@
+{
+ "dashboardMetadata": {
+  "dashboardFilter": null,
+  "name": "Release Trends",
+  "owner": "daniel.braaf@gmail.com",
+  "popularity": 10,
+  "shared": false,
+  "tilesNameSize": null
+ },
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   6
+  ]
+ },
+ "tiles": [
+  {
+   "bounds": {
+    "height": 228,
+    "left": 684,
+    "top": 152,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Staging Evaluations",
+   "nameSize": null,
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:filter(and(eq(Application,simplenodeservice-staging))):splitBy(Result):count:auto:sort(value(avg,descending))",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Result"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": null,
+    "resolution": "5m"
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": null,
+      "visible": true
+     },
+     "yAxes": []
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "AREA"
+      },
+      "seriesOverrides": [
+       {
+        "color": "#99dea8",
+        "name": "pass"
+       },
+       {
+        "color": "#ffee7c",
+        "name": "warning"
+       },
+       {
+        "color": "#f28289",
+        "name": "fail"
+       }
+      ],
+      "unitTransform": null,
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": null
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#99dea8",
+        "value": 90
+       },
+       {
+        "color": "#ffee7c",
+        "value": 70
+       },
+       {
+        "color": "#f28289",
+        "value": 0
+       }
+      ],
+      "visible": false
+     }
+    ],
+    "type": "PIE_CHART"
+   }
+  },
+  {
+   "bounds": {
+    "height": 228,
+    "left": 342,
+    "top": 152,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Dev Evaluations",
+   "nameSize": null,
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:filter(and(eq(Application,simplenodeservice-dev))):splitBy(Result):count:auto:sort(value(avg,descending))",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Result"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": null,
+    "resolution": "5m"
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": null,
+      "visible": true
+     },
+     "yAxes": []
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "AREA"
+      },
+      "seriesOverrides": [
+       {
+        "color": "#99dea8",
+        "name": "pass"
+       },
+       {
+        "color": "#ffee7c",
+        "name": "warning"
+       },
+       {
+        "color": "#f28289",
+        "name": "fail"
+       }
+      ],
+      "unitTransform": null,
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": null
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#99dea8",
+        "value": 90
+       },
+       {
+        "color": "#ffee7c",
+        "value": 70
+       },
+       {
+        "color": "#f28289",
+        "value": 0
+       }
+      ],
+      "visible": false
+     }
+    ],
+    "type": "PIE_CHART"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 0,
+    "top": 0,
+    "width": 342
+   },
+   "configured": true,
+   "entitySelector": null,
+   "name": "Problems Detected by Davis",
+   "nameSize": null,
+   "problemSelector": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "OPEN_PROBLEMS"
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 1368,
+    "top": 0,
+    "width": 304
+   },
+   "configured": true,
+   "name": "Smartscape",
+   "nameSize": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "PURE_MODEL"
+  },
+  {
+   "bounds": {
+    "height": 380,
+    "left": 0,
+    "top": 152,
+    "width": 342
+   },
+   "chartVisible": true,
+   "configured": true,
+   "filterConfig": null,
+   "name": "Service health",
+   "nameSize": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "SERVICES"
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 1710,
+    "top": 0,
+    "width": 342
+   },
+   "configured": true,
+   "markdown": "### Environments\n\n+ [ 🔧 Dev](http://54.145.28.46:8000/) \n+ [ 🚦 Staging](http://54.145.28.46:8001/) \n+ [ 💵 Prod](http://54.145.28.46:8002/) \n+ [ 🚢 Kubernetes Cluster](/ui/kubernetes/KUBERNETES_CLUSTER-E666B3BF740C4848?gtf=-2h\u0026gf=all) \n",
+   "name": "Markdown",
+   "nameSize": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "MARKDOWN"
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 1710,
+    "top": 152,
+    "width": 342
+   },
+   "configured": true,
+   "markdown": "### Slo Dashboards\n+ [ 🚦 Slo-Evaluation Dev](#dashboard;gtf=-24h%20to%20now;gf=2462787389709860009;id=76196020-e322-42c2-bc82-f7868171247e)\n+ [ 🚦 Slo-Evaluation Staging](#dashboard;gtf=-2h;gf=2462787389709860009;id=e061a600-0a14-423f-a163-557d402b0bbe)\n+ [ 🚦 Slo-Evaluation Prod](#dashboard;gtf=-2h;gf=2462787389709860009;id=9d789d18-f896-4cb5-bb34-bb1db6300ee0)\n+ [ 🚦 Prod Pre-Deployment Check](#dashboard;gtf=-2h;gf=2462787389709860009;id=478904d7-a456-4c49-9ad2-15da8ec7bb66)\n",
+   "name": "Markdown",
+   "nameSize": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": "-24h to now"
+   },
+   "tileType": "MARKDOWN"
+  },
+  {
+   "bounds": {
+    "height": 190,
+    "left": 1710,
+    "top": 304,
+    "width": 342
+   },
+   "configured": true,
+   "markdown": "### Releases\n+ [ 🚦 Cloudautomation ](https://pgz58351.cloudautomation.live.dynatrace.com/bridge/project/slo-evaluation/sequence)\n+ [💾 GitOps repo](https://github.com/danatrace/simplenodeservice)\n+ [💾 Github Actions](https://github.com/danatrace/simplenodeservice/actions)\n+ [💾 Github Project](https://github.com/danatrace/simplenodeservice/projects/5)\n+ [🚀 Release Inventory](/ui/releases?gtf=-30m\u0026gf=all\u0026invsc=version\u0026invsd=desc) \n",
+   "name": "Markdown",
+   "nameSize": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "MARKDOWN"
+  },
+  {
+   "bounds": {
+    "height": 304,
+    "left": 684,
+    "top": 532,
+    "width": 684
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Release Evaluation Trends by Environment",
+   "nameSize": "medium",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:splitBy(\"Application\"):avg",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Application"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "LAST_VALUE",
+    "resolution": "1m"
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": "",
+      "visible": true
+     },
+     "yAxes": [
+      {
+       "defaultAxis": true,
+       "displayName": "",
+       "max": "100",
+       "min": "AUTO",
+       "position": "LEFT",
+       "queryIds": [
+        "A"
+       ],
+       "visible": true
+      }
+     ]
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": false
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#e6be00",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "GRAPH_CHART"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 342,
+    "top": 0,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Latest SLO Evaluation Dev",
+   "nameSize": "medium",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:splitBy(\"Evaluationtime\",\"Releaseversion\",\"Application\"):avg:sort(dimension(\"Evaluationtime\",descending)):filter(eq(\"Application\",\"simplenodeservice-dev\"))",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Evaluationtime",
+      "Releaseversion",
+      "Application"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "LAST_VALUE",
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": null,
+      "visible": true
+     },
+     "yAxes": []
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": false
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": {
+     "linkTileColorToThreshold": true,
+     "showSparkLine": true,
+     "showTrend": true
+    },
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": false
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#f5d30f",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "SINGLE_VALUE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 684,
+    "top": 0,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Latest SLO Evaluation Staging",
+   "nameSize": "medium",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:splitBy(\"Evaluationtime\",\"Releaseversion\",\"Application\"):avg:sort(dimension(\"Evaluationtime\",descending)):filter(eq(\"Application\",\"simplenodeservice-staging\"))",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Evaluationtime",
+      "Releaseversion",
+      "Application"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "TOTAL",
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": null,
+      "visible": true
+     },
+     "yAxes": []
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": false
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": {
+     "linkTileColorToThreshold": true,
+     "showSparkLine": true,
+     "showTrend": true
+    },
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": false
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#f5d30f",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "SINGLE_VALUE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 1026,
+    "top": 0,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Latest SLO Evaluation Prod",
+   "nameSize": "medium",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:splitBy(\"Evaluationtime\",\"Releaseversion\",\"Application\"):avg:sort(dimension(\"Evaluationtime\",descending)):filter(eq(\"Application\",\"simplenodeservice-production\"))",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Evaluationtime",
+      "Releaseversion",
+      "Application"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "TOTAL",
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": null,
+      "visible": true
+     },
+     "yAxes": []
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": false
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": {
+     "linkTileColorToThreshold": true,
+     "showSparkLine": true,
+     "showTrend": true
+    },
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": false
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#f5d30f",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "SINGLE_VALUE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 304,
+    "left": 0,
+    "top": 532,
+    "width": 684
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Release Evaluation Results",
+   "nameSize": "medium",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:filter(and(or(eq(Application,simplenodeservice-dev),eq(Application,simplenodeservice-production),eq(Application,simplenodeservice-staging),eq(Application,simplenodeservice-production-DG)))):splitBy(Application,Buildversion,Evaluationtime):avg:auto:sort(dimension(\"Evaluationtime\",descending)):limit(100)\n",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Application",
+      "Buildversion",
+      "Evaluationtime"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "LAST_VALUE",
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": "",
+      "visible": true
+     },
+     "yAxes": [
+      {
+       "defaultAxis": true,
+       "displayName": "",
+       "max": "100",
+       "min": "AUTO",
+       "position": "LEFT",
+       "queryIds": [
+        "A"
+       ],
+       "visible": true
+      }
+     ]
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": true
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": "Release Evaluation Score",
+      "queryId": "A",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#e6be00",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "TABLE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 228,
+    "left": 1026,
+    "top": 152,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Production Evaluation",
+   "nameSize": null,
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:filter(and(eq(Application,simplenodeservice-production))):splitBy(Result):count:auto:sort(value(avg,descending))",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Result"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": null,
+    "resolution": "5m"
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": null,
+      "visible": true
+     },
+     "yAxes": []
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "AREA"
+      },
+      "seriesOverrides": [
+       {
+        "color": "#99dea8",
+        "name": "pass"
+       },
+       {
+        "color": "#ffee7c",
+        "name": "warning"
+       },
+       {
+        "color": "#f28289",
+        "name": "fail"
+       }
+      ],
+      "unitTransform": null,
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": null
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#99dea8",
+        "value": 90
+       },
+       {
+        "color": "#ffee7c",
+        "value": 70
+       },
+       {
+        "color": "#f28289",
+        "value": 0
+       }
+      ],
+      "visible": false
+     }
+    ],
+    "type": "PIE_CHART"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 342,
+    "top": 380,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Current Version in Dev",
+   "nameSize": "small",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:filter(eq(Application,simplenodeservice-dev)):splitBy(Buildversion,Evaluationtime):avg:auto:sort(dimension(\"Evaluationtime\",descending)):limit(1)\n",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Buildversion",
+      "Evaluationtime"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "LAST_VALUE",
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": "",
+      "visible": true
+     },
+     "yAxes": [
+      {
+       "defaultAxis": true,
+       "displayName": "",
+       "max": "100",
+       "min": "AUTO",
+       "position": "LEFT",
+       "queryIds": [
+        "A"
+       ],
+       "visible": true
+      }
+     ]
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": true
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": "Release Evaluation Score",
+      "queryId": "A",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#e6be00",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "TABLE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 1026,
+    "top": 380,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Current Version in Prod",
+   "nameSize": "small",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:filter(eq(Application,simplenodeservice-production)):splitBy(Buildversion,Evaluationtime):avg:auto:sort(dimension(\"Evaluationtime\",descending)):limit(1)\n",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Buildversion",
+      "Evaluationtime"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "LAST_VALUE",
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": "",
+      "visible": true
+     },
+     "yAxes": [
+      {
+       "defaultAxis": true,
+       "displayName": "",
+       "max": "100",
+       "min": "AUTO",
+       "position": "LEFT",
+       "queryIds": [
+        "A"
+       ],
+       "visible": true
+      }
+     ]
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": true
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": "Release Evaluation Score",
+      "queryId": "A",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#e6be00",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "TABLE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 684,
+    "top": 380,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Single value",
+   "name": "Current Version in Staging",
+   "nameSize": "small",
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": null,
+     "foldTransformation": null,
+     "id": "A",
+     "limit": null,
+     "metric": null,
+     "metricSelector": "ext:releaseevaluationscore:filter(and(eq(Application,simplenodeservice-staging),eq(\"Result\",pass))):splitBy(Buildversion,Evaluationtime):avg:auto:sort(dimension(\"Evaluationtime\",descending)):limit(1)\n",
+     "sortBy": null,
+     "spaceAggregation": null,
+     "splitBy": [
+      "Buildversion",
+      "Evaluationtime"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": "LAST_VALUE",
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": {
+     "id": "all",
+     "name": "All"
+    },
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": "",
+      "visible": true
+     },
+     "yAxes": [
+      {
+       "defaultAxis": true,
+       "displayName": "",
+       "max": "100",
+       "min": "AUTO",
+       "position": "LEFT",
+       "queryIds": [
+        "A"
+       ],
+       "visible": true
+      }
+     ]
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": true
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "LINE"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": true
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": "Release Evaluation Score",
+      "queryId": "A",
+      "rules": [
+       {
+        "color": "#048855",
+        "value": 90
+       },
+       {
+        "color": "#e6be00",
+        "value": 70
+       },
+       {
+        "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "TABLE"
+   }
+  },
+  {
+   "assignedEntities": [
+    "SERVICE-0461F07BA7F8E5E9"
+   ],
+   "bounds": {
+    "height": 228,
+    "left": 2622,
+    "top": 646,
+    "width": 304
+   },
+   "configured": true,
+   "name": "Service or request",
+   "nameSize": "small",
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "SERVICE_VERSATILE"
+  },
+  {
+   "assignedEntities": [
+    "SERVICE-309DEDF451AFF640"
+   ],
+   "bounds": {
+    "height": 228,
+    "left": 2622,
+    "top": 418,
+    "width": 304
+   },
+   "configured": true,
+   "name": "Service or request",
+   "nameSize": "small",
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "SERVICE_VERSATILE"
+  },
+  {
+   "assignedEntities": [
+    "SERVICE-0461F07BA7F8E5E9"
+   ],
+   "bounds": {
+    "height": 228,
+    "left": 2622,
+    "top": 190,
+    "width": 304
+   },
+   "configured": true,
+   "name": "Service or request",
+   "nameSize": "small",
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "SERVICE_VERSATILE"
+  },
+  {
+   "bounds": {
+    "height": 380,
+    "left": 1368,
+    "top": 456,
+    "width": 304
+   },
+   "chartVisible": true,
+   "configured": true,
+   "filterConfig": null,
+   "name": "Host health",
+   "nameSize": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "HOSTS"
+  },
+  {
+   "bounds": {
+    "height": 304,
+    "left": 1368,
+    "top": 152,
+    "width": 304
+   },
+   "configured": true,
+   "name": "Network metrics",
+   "nameSize": null,
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "NETWORK"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+config:
+- CpuUsage: CpuUsage.json
+- SecurityaffectedProcessGroupsSLO: SecurityaffectedProcessGroupsSLO.json
+CpuUsage:
+- name: 'Cpu Usage '
+SecurityaffectedProcessGroupsSLO:
+- name: Security affected Process Groups SLO

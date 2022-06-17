@@ -1,0 +1,10 @@
+config:
+- simplenode-staging: simplenode-staging.json
+- simplenode-dev: simplenode-dev.json
+- simplenode-prod: simplenode-prod.json
+simplenode-dev:
+- name: simplenode-dev
+simplenode-prod:
+- name: simplenode-prod
+simplenode-staging:
+- name: simplenode-staging

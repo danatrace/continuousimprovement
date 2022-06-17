@@ -1,0 +1,42 @@
+{
+ "description": null,
+ "entitySelectorBasedRules": [],
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [],
+  "currentConfigurationVersions": [
+   "1.0.2"
+  ]
+ },
+ "name": "{{.name}}",
+ "rules": [
+  {
+   "conditions": [
+    {
+     "comparisonInfo": {
+      "caseSensitive": null,
+      "negate": false,
+      "operator": "EXISTS",
+      "type": "STRING",
+      "value": null
+     },
+     "key": {
+      "attribute": "PROCESS_GROUP_CUSTOM_METADATA",
+      "dynamicKey": {
+       "key": "keptn_project",
+       "source": "ENVIRONMENT"
+      },
+      "type": "PROCESS_CUSTOM_METADATA_KEY"
+     }
+    }
+   ],
+   "enabled": true,
+   "normalization": "LEAVE_TEXT_AS_IS",
+   "propagationTypes": [
+    "SERVICE_TO_PROCESS_GROUP_LIKE"
+   ],
+   "type": "SERVICE",
+   "valueFormat": "{ProcessGroup:Environment:keptn_project}"
+  }
+ ]
+}

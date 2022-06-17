@@ -1,0 +1,29 @@
+{
+ "burnRateMetricKey": "func:slo.errorBudgetBurnRate.security_affected_process_groups_slo",
+ "denominatorValue": 0,
+ "description": "",
+ "enabled": true,
+ "error": "NONE",
+ "errorBudget": 85.21943573667713,
+ "errorBudgetBurnRate": {
+  "burnRateVisualizationEnabled": true,
+  "fastBurnThreshold": 10
+ },
+ "evaluatedPercentage": 98.52194357366771,
+ "evaluationType": "AGGREGATE",
+ "filter": "",
+ "metricDenominator": "",
+ "metricExpression": "100 - builtin:security.vulnerabilities.global.countAffectedProcessGroups.all",
+ "metricKey": "func:slo.security_affected_process_groups_slo",
+ "metricNumerator": "",
+ "metricRate": "",
+ "name": "{{.name}}",
+ "numeratorValue": 0,
+ "relatedOpenProblems": -1,
+ "relatedTotalProblems": -1,
+ "status": "WARNING",
+ "target": 90,
+ "timeframe": "-1w",
+ "useRateMetric": true,
+ "warning": 99
+}

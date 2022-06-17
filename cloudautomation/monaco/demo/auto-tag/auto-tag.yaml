@@ -1,0 +1,13 @@
+config:
+- keptnstage: keptnstage.json
+- keptnproject: keptnproject.json
+- keptndeployment: keptndeployment.json
+- keptnservice: keptnservice.json
+keptndeployment:
+- name: keptn_deployment
+keptnproject:
+- name: keptn_project
+keptnservice:
+- name: keptn_service
+keptnstage:
+- name: keptn_stage

@@ -1,0 +1,14 @@
+---
+spec_version: '0.1.0'
+dashboard: query
+attachRules:
+  tagRule:
+  - meTypes:
+    - PROCESS_GROUP_INSTANCE
+    tags:
+    - context: KUBERNETES
+      key: "app.kubernetes.io/name"
+      value: $SERVICE    
+    - context: ENVIRONMENT
+      key: DT_APPLICATION_ENVIRONMENT
+      value: $STAGE
