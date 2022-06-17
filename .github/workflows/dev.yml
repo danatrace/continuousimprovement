@@ -16,6 +16,9 @@ env:
   DT_URL: ""
   DT_MZ_ID: ""
   DT_DEV_DB_ID: ""
+  DT_STAGING_DB_ID: ""
+  DT_PROD_DB_ID: ""
+  DT_PRE_DB_ID: ""
   DOCKER_TAG: ""
   
   
