@@ -1,0 +1,397 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI/CD Deployment Staging
+
+# Controls when the workflow will run
+on:
+
+
+  pull_request_target:
+    types:
+      - closed
+    branches: [ staging ]
+    
+
+  workflow_dispatch:
+
+env:
+  ## Sets environment variables
+  GITHUB_PROJECT_URL: "" 
+  DT_URL: ""
+  DT_MZ_ID: ""
+  DT_DEV_DB_ID: ""
+  DOCKER_TAG: ""
+
+
+
+
+jobs:
+
+
+  Open-Tracking-Issue:
+       runs-on: dynatracedemo
+       environment:
+          name: staging
+          url: ${{env.GITHUB_PROJECT_URL}} 
+       outputs:
+            output1: ${{ steps.create-issue.outputs.number }}
+            output2: ${{ steps.set-version.outputs.build_version }}
+            output3: ${{ steps.set_ip.outputs.publicip }}
+       steps:
+       - name: Set Release Version Variablea
+         id: set_ip
+         run: |
+               export build_version=$(cat /home/ec2-user/release)
+               export cmtmsgt=$(cat /home/ec2-user/commitmsg)
+               echo $build_version
+               echo "build_version=$(echo $build_version)" >> "$GITHUB_ENV"
+               export publicip=$(curl http://checkip.amazonaws.com)               
+               echo "::set-output name=publicip::$publicip"
+                     
+       - id: set-version
+         run: |
+                echo "::set-output name=build_version::${{ env.build_version }}"
+        
+       - name: Create Issue Action
+         id: create-issue
+         uses: dacbd/create-issue-action@main
+         with:
+            title: Staging Release
+            token: ${{secrets.WORKFLOW_TOKEN}}
+            assignees: ${{github.actor}}
+            labels: documentation, Build ${{ steps.set-version.outputs.build_version }}
+            body: <a href="${{ github.SERVER_URL }}/${{ github.REPOSITORY }}/actions/runs/${{ github.RUN_ID }}"> Workflow Monitor </a> <br> <a href="${{env.DT_URL}}/#dashboard;id=${{env.DT_DEV_DB_ID}};gf=${{env.DT_MZ_ID}};gtf=-10m"> Dynatrace Dev Evaluation Dashboard  </a> <br> <a href="${{secrets.DT_CA_URL}}/bridge/project/slo-evaluation/sequence"> Dynatrace Cloud automation  </a>
+
+       - run: |
+           echo Created issue number ${{ steps.create-issue.outputs.number }}
+      
+       - name: Create or Update Project Card
+         uses: peter-evans/create-or-update-project-card@v2
+         with:
+            project-name: Simplenodeservice
+            column-name: 🧑‍💻 In progress
+            issue-number: ${{ steps.create-issue.outputs.number }}
+       
+
+        
+  Deploy-Application:
+    runs-on: dynatracedemo
+    environment:
+      name: staging
+      url: "http://${{ needs.Open-Tracking-Issue.outputs.output3 }}:8001/"
+    needs: Open-Tracking-Issue
+    steps:
+    - name: Deploy Application to Staging NS
+      env:
+        builid: ${{ github.run_number }}
+      run: |
+        export ct_version="${{ needs.Open-Tracking-Issue.outputs.output2 }}"
+        export build_version=$(cat /home/ec2-user/release)
+        export dockertag="${{env.DOCKER_TAG}}"
+        rm -f rollback_staging.yaml || true 
+        cp /home/ec2-user/final_staging.yml /home/ec2-user/rollback_staging.yaml  || true        
+        rm -f final_staging.yml || true
+        rm -f temp.yml || true
+        ( echo "cat <<EOF >final_staging.yml";
+          cat kubernetes/env/staging.yaml;
+          echo "EOF";
+        ) >temp_staging.yml
+        . temp_staging.yml
+        cat final_staging.yml
+        export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+        echo "$(cat final_staging.yml)"
+        kubectl replace -f final_staging.yml --force
+        cp final_staging.yml /home/ec2-user/final_staging.yml
+        kubectl wait --for=condition=available --timeout=120s --all deployments -A
+
+    
+  
+  Run-Tests:
+      runs-on: dynatracedemo
+      needs: Deploy-Application
+      outputs:
+              test_start_time: ${{ steps.set_start_time.outputs.startdate }}
+              test_end_time: ${{ steps.set_end_time.outputs.enddate }}
+      steps: 
+      - name: set test start time
+        id: set_start_time
+        run: echo "::set-output name=startdate::$(date -d "$TIME - 5min" +"%Y-%m-%dT%H:%M:%S")"
+      - name: Run JMeter Action on a test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: jmeter/simplenodeservice_load.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
+          
+      - name: Run JMeter Action on a test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: jmeter/simplenodeservice_perfcheck.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
+          
+      - name: set var
+        run: |
+          export cmtmsgt=$(cat /home/ec2-user/commitmsg)
+          echo "cmtmsgt=$cmtmsgt" >> "$GITHUB_ENV"
+       
+          
+      - name: Stress-Simulation-Cpu
+        if: "contains(env.cmtmsgt, 'failstaging')"
+        run: |
+          sudo amazon-linux-extras install epel
+          sudo yum install -y epel-release
+          sudo yum install stress -y
+          sudo stress --cpu 32 --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1 -t 150s
+  
+      - name: Stress-Simulation-Cpu
+        if: "contains(env.cmtmsgt, 'failstaginglong')"
+        run: |
+          sudo amazon-linux-extras install epel
+          sudo yum install -y epel-release
+          sudo yum install stress -y
+          sudo stress --cpu 32 --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1 -t 30m
+          
+      - name: Initial Deployment
+        if: "contains(env.cmtmsgt, 'first')"
+        run: |
+             sleep 500
+        
+          
+      - name: set test end time
+        id: set_end_time
+        run: echo "::set-output name=enddate::$(date -d "$TIME - 0min" +"%Y-%m-%dT%H:%M:%S")"
+    
+          
+  
+  Dynatrace-Slo-Evaluation:
+ 
+    runs-on: dynatracedemo
+    environment:
+        name: staging
+        url: ${{env.DT_URL}}/#dashboard;gtf=${{ env.startdate }}+02:00%20to%20${{ env.enddate }}+02:00;gf=${{env.DT_MZ_ID}};id=${{env.DT_DEV_DB_ID}}
+    outputs:
+            output1: ${{ steps.passvariable.outputs.EVALUATION_SCORE }}
+            output2: ${{ steps.passvariable.outputs.kepncontext }}
+            output3: ${{ steps.passvariable.outputs.startdate }}
+            output4: ${{ steps.passvariable.outputs.enddate }}
+    needs: [Run-Tests, Open-Tracking-Issue]
+    steps:
+    - name: trigger-dynatrace-slo-evaluation 
+      env:
+        ca_token: ${{ secrets.CA_TOKEN}} 
+        EVALUATION_SCORE: $EVALUATION_SCORE
+      run: |
+        trigger_evaluation()
+        {
+        curl -X POST "${{secrets.DT_CA_URL}}/api/controlPlane/v1/project/slo-evaluation/stage/staging/service/tnt-acer-svc/evaluation" \
+        -H "accept: application/json; charset=utf-8" \
+        -H "x-token: $ca_token " \
+        -H "Content-Type: application/json; charset=utf-8" \
+        -d "{\"start\": \"${{ needs.Run-Tests.outputs.test_start_time }}.000Z\", \"end\": \"${{ needs.Run-Tests.outputs.test_end_time }}.000Z\", \"labels\":{\"buildId\":\"${{ needs.Open-Tracking-Issue.outputs.output2 }}\", \"evaltime\":\"$(date +%s%3N)\"}}" \
+        -o "keptnContext.json"
+        keptnContext=$(cat keptnContext.json | jq -r '.keptnContext')
+        echo "Keptn context: $keptnContext"
+        echo $keptnContext
+        }
+        trigger_evaluation
+        
+        EVALUATION_RESULT=""
+        EVALUATION_SCORE=""
+        EVALUATION_SCORE=$(curl -X GET "${{secrets.DT_CA_URL}}/api/mongodb-datastore/event?keptnContext=$keptnContext&&type=sh.keptn.event.evaluation.finished" \
+            -H "accept: application/json; charset=utf-8" \
+            -H "x-token: $ca_token" | jq -r '.events[0].data.evaluation.score')
+        echo $EVALUATION_SCORE
+        while [[ "$EVALUATION_SCORE" == null ]]
+        do
+            EVALUATION_SCORE=$(curl -X GET "${{secrets.DT_CA_URL}}/api/mongodb-datastore/event?keptnContext=$keptnContext&&type=sh.keptn.event.evaluation.finished" \
+                -H "accept: application/json; charset=utf-8" \
+                -H "x-token: $ca_token" | jq  '.events[0].data.evaluation.score')
+            sleep 10
+            
+         
+        done
+        startdate=$(date -d "${{ needs.Run-Tests.outputs.test_start_time }} 120min" +"%Y-%m-%dT%H:%M:%S")
+        enddate=$(date -d "${{ needs.Run-Tests.outputs.test_end_time }} 120min" +"%Y-%m-%dT%H:%M:%S")
+        echo $EVALUATION_SCORE
+        echo "EVALUATION_SCORE=$EVALUATION_SCORE" >> "$GITHUB_ENV"
+        echo $keptnContext
+        echo "kepncontext=$keptnContext" >> "$GITHUB_ENV"
+        echo "startdate=$startdate" >> "$GITHUB_ENV"
+        echo "enddate=$enddate" >> "$GITHUB_ENV"
+        sleep 50
+
+    - id: passvariable
+      run: |
+          echo "::set-output name=EVALUATION_SCORE::${{ env.EVALUATION_SCORE }}"
+          echo "::set-output name=kepncontext::${{ env.kepncontext }}"
+          echo "::set-output name=startdate::${{ env.startdate }}"
+          echo "::set-output name=enddate::${{ env.enddate }}"
+   
+      
+    - name: Create comment
+      if: "${{ steps.passvariable.outputs.EVALUATION_SCORE >= 90 }}"
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+          issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+          body: |
+               Simplenodeservice was successfully deployed to Staging <a href="http://${{ needs.Open-Tracking-Issue.outputs.output3 }}:8001/"> Simplenodeservice Staging </a> <br> Slo Evaluation has Passed with a Score of ${{ steps.passvariable.outputs.EVALUATION_SCORE }}% <a href="${{env.DT_URL}}/#dashboard;gtf=${{ env.startdate }}+02:00%20to%20${{ env.enddate }}+02:00;gf=${{env.DT_MZ_ID}};id=${{env.DT_DEV_DB_ID}}"> Dynatrace Slo Dashboard </a>
+
+      
+    - name: Create or Update Project Card
+      if: "${{ steps.passvariable.outputs.EVALUATION_SCORE >= 90 }}"
+      uses: peter-evans/create-or-update-project-card@v2
+      with:
+          project-name: Simplenodeservice
+          column-name: 🔍 Ready for Review
+          issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+          
+        
+    - name: Create Label
+      if: "${{ steps.passvariable.outputs.EVALUATION_SCORE >= 90 }}" 
+      uses: andymckay/labeler@1.0.4
+      with:
+            # The GitHub token
+            repo-token: ${{secrets.WORKFLOW_TOKEN}}
+            # Labels to add to an issue, seperated by commas.
+            add-labels: "Slo Evaluation Passed"
+            # An issue number or PR number or project card number. Optional, if not specified, will use the one available in github event `github.event.pull_request` or `github.event.issue`
+            issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+    
+         
+          
+  On-Fail-Create-Issue:
+       runs-on: dynatracedemo
+       environment:
+          name: staging
+          url: ${{env.GITHUB_PROJECT_URL}} 
+       needs: [Dynatrace-Slo-Evaluation, Open-Tracking-Issue]
+       if: "${{ needs.Dynatrace-Slo-Evaluation.outputs.output1 < 90 }}"
+       steps:
+       - name: Create Issue Action
+         id: create-issue2
+         uses: dacbd/create-issue-action@main
+         with:
+            title: Staging Slo Evaluation Failed with ${{ needs.Dynatrace-slo-evaluation.outputs.output1 }} % 
+            token: ${{secrets.WORKFLOW_TOKEN}}
+            assignees: ${{github.actor}}
+            labels: Slo Evaluation Failed, Build ${{ needs.Open-Tracking-Issue.outputs.output2 }}
+            body: Slo Evaluation Failed <a href="${{secrets.DT_CA_URL}}/bridge/project/slo-evaluation/service/tnt-acer-svc/context/${{ needs.Dynatrace-Slo-Evaluation.outputs.output2 }}"> Cloud Automation </a> <br> <a href="${{env.DT_URL}}/#dashboard;gtf=${{ needs.Dynatrace-Slo-Evaluation.outputs.output3 }}+02:00%20to%20$${{ needs.Dynatrace-Slo-Evaluation.outputs.output4 }}+02:00;gf=${{env.DT_MZ_ID}};id=${{env.DT_DEV_DB_ID}}"> Dynatrace Slo Dashboard </a>
+         env:
+           EVALUATION_SCORE: ${{env.EVALUATION_SCORE}}
+           
+       - name: Create or Update Project Card
+         uses: peter-evans/create-or-update-project-card@v2
+         with:
+            project-name: Simplenodeservice
+            column-name: 📨 To do
+            issue-number: ${{ steps.create-issue2.outputs.number }}           
+           
+       - name: Create comment
+         uses: peter-evans/create-or-update-comment@v2
+         with:
+           issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+           body: Slo Evaluation Failed <a href="${{secrets.DT_CA_URL}}/bridge/project/slo-evaluation/service/tnt-acer-svc/context/${{ needs.Dynatrace-Slo-Evaluation.outputs.output2 }}"> Cloud Automation </a> <br> <a href="${{env.DT_URL}}/#dashboard;gtf=${{ needs.Dynatrace-Slo-Evaluation.outputs.output3 }}+02:00%20to%20$${{ needs.Dynatrace-Slo-Evaluation.outputs.output4 }}+02:00;gf=${{env.DT_MZ_ID}};id=${{env.DT_DEV_DB_ID}}"> Dynatrace Slo Dashboard </a>
+
+       - name: Create Label
+         uses: andymckay/labeler@1.0.4
+         with:
+            # The GitHub token
+            repo-token: ${{secrets.WORKFLOW_TOKEN}}
+            # Labels to add to an issue, seperated by commas.
+            add-labels: "Slo Evaluation Failed"
+            # An issue number or PR number or project card number. Optional, if not specified, will use the one available in github event `github.event.pull_request` or `github.event.issue`
+            issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+
+       - name: Close Issue
+         uses: peter-evans/close-issue@v2
+         with:
+            issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+            comment: Auto-closing issue
+            
+       - name: Create or Update Project Card
+         uses: peter-evans/create-or-update-project-card@v2
+         with:
+          project-name: Simplenodeservice
+          column-name: ✅ Done 
+          issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+
+
+  On-Fail-Rollback:
+       runs-on: dynatracedemo
+       needs: [Dynatrace-Slo-Evaluation, Open-Tracking-Issue]
+       if: "${{ needs.Dynatrace-Slo-Evaluation.outputs.output1 < 90 }}"         
+       steps:
+       - name: Rollback
+         env:
+           builid: ${{ github.run_number }}
+         run: |
+            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            echo "$(rollback_staging.yaml)"
+            kubectl replace -f /home/ec2-user/rollback_staging.yaml --force
+            kubectl wait --for=condition=available --timeout=120s --all deployments -A
+                 
+
+           
+               
+  On-Success-Approval-Merge: 
+       runs-on: dynatracedemo
+       environment:
+          name: production-approval
+          url: "${{ github.SERVER_URL }}/${{ github.REPOSITORY }}/actions/workflows/staging.yml"
+       needs: [Dynatrace-Slo-Evaluation, Open-Tracking-Issue]
+       if: "${{ needs.Dynatrace-Slo-Evaluation.outputs.output1 > 89 }}" 
+       steps:             
+ 
+       - name: Create or Update Project Card
+         uses: peter-evans/create-or-update-project-card@v2
+         with:
+          project-name: Simplenodeservice
+          column-name: ✅ Done 
+          issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+          
+          
+       - name: Create comment
+         if: "${{ needs.Dynatrace-Slo-Evaluation.outputs.output1 > 89 }}" 
+         uses: peter-evans/create-or-update-comment@v2
+         with:
+              issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+              labels: Slo Evaluation Passed
+              body: |
+                    :sparkles: Build simplenodeservice:${{ needs.Open-Tracking-Issue.outputs.output2 }} was successfully deployed to Staging :sparkles:
+                    
+       - name: Close Issue
+         uses: peter-evans/close-issue@v2
+         with:
+            issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
+            comment: Auto-closing issue
+
+       - name: pull-request-action
+         id: pull_request
+         uses: vsoch/pull-request-action@master
+         env:
+               GITHUB_TOKEN: ${{secrets.WORKFLOW_TOKEN}}
+               PULL_REQUEST_FROM_BRANCH: "staging"
+               PULL_REQUEST_BRANCH: "master"
+               PASS_ON_ERROR: "true"  
+
+       - name: merge a pull request
+         uses: sudo-bot/action-pull-request-merge@v1.1.1
+         with:
+            github-token: ${{secrets.WORKFLOW_TOKEN}}
+            number: ${{ env.PULL_REQUEST_NUMBER }}
+            merge-title: "${{ github.event.head_commit.message }}"
+            merge-message: "${{ github.event.head_commit.message }}"   
+           
+
+
+        
+
+          
+
+
+          
+    
+
+  
+

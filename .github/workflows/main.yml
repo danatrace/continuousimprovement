@@ -1,0 +1,156 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Install Demo
+
+# Controls when the workflow will run
+on:
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  install:
+    # The type of runner that the job will run on
+    runs-on: dynatracedemo
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      #- uses: actions/checkout@v3
+      # Runs a single command using the runners shell
+      - uses: actions/checkout@v2
+        with:
+           ref: 'master'
+           
+      - name: create custom metric
+        run: |
+            curl -X PUT ${{ secrets.DT_API_URL }}/v1/timeseries/custom:releaseevaluationscore -H "Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}" -H "Content-Type: application/json" --data-binary @- <<DATA
+            {
+                "timeseriesId": "custom:releaseevaluationscore",
+                "displayName": "Release Evaluation Score",
+                "dimensions": ["Score", "Result", "Passed", "Releaseversion", "Buildversion", "Buildnumber", "Evaluationtime", "Application"],
+                "aggregationTypes": ["AVG", "SUM", "MIN", "MAX"],
+                "unit": "Unspecified",
+                "filter": "CUSTOM",
+                "detailedSource": "API",
+                "types": ["test"],
+                "warnings": []
+            }
+            DATA
+            
+      - name: monaco create env file
+        run: |
+           cd cloudautomation/monaco
+           cat << EOF > environments.yaml
+           demo:
+               - name: "demo"
+               - env-url: "${{ secrets.DT_URL }}"
+               - env-token-name: "DT_API_TOKEN"    
+               
+    
+      - name: run Monaco
+        run: | 
+           export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}
+           cd cloudautomation/monaco
+           curl -L https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/download/v1.7.0/monaco-linux-amd64 -o monaco
+           chmod +x monaco
+           # deploy repo folder
+           sudo mv monaco /usr/local/bin/
+           monaco --environments=environments.yaml
+            
+      
+      
+      - name: Uninstall Rancher if Exists
+        run: k3s-uninstall.sh || true
+      - name: install dynatrace Agent
+        run: |        
+            wget  -O Dynatrace-OneAgent-Linux-1.241.212.sh "${{ secrets.DT_API_URL }}/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default" --header="Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}"
+            wget https://ca.dynatrace.com/dt-root.cert.pem ; ( echo 'Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="--SIGNED-INSTALLER"'; echo ; echo ; echo '----SIGNED-INSTALLER' ; cat Dynatrace-OneAgent-Linux-1.241.212.sh ) | openssl cms -verify -CAfile dt-root.cert.pem > /dev/null
+            /bin/sh Dynatrace-OneAgent-Linux-1.241.212.sh --set-infra-only=false --set-app-log-content-access=true --set-host-tag=tnt-acer-svc
+
+      # Runs a set of commands using the runners shell
+      - name: Install Rancher on AWS linux
+        run: |
+          KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+          sudo yum update -y
+          sudo yum install git -y
+          sudo yum install curl -y
+          sudo yum install jq -y
+          sudo yum install tree -y
+          cd /home/ec2-user/
+          curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 64
+      - name: Install Dynatrace Active Gate
+        run: |
+            #!/bin/bash
+            cat << EOF1 > /home/ec2-user/dynacube.yaml
+            apiVersion: v1
+            data:
+              apiToken: ${{ secrets.DT_API_TOKEN_B64 }}
+              dataIngestToken: ${{ secrets.DT_DATAINGESTTOKEN }}
+            kind: Secret
+            metadata:
+              name: test
+              namespace: dynatrace
+            type: Opaque
+            ---
+            apiVersion: dynatrace.com/v1beta1
+            kind: DynaKube
+            metadata:
+              name: test
+              namespace: dynatrace
+              annotations:
+                feature.dynatrace.com/automatic-kubernetes-api-monitoring: "true"
+            spec:
+              apiUrl: ${{ secrets.DT_API_URL }} 
+              skipCertCheck: false
+              oneAgent:
+                classicFullStack:
+                  tolerations:
+                    - effect: NoSchedule
+                      key: node-role.kubernetes.io/master
+                      operator: Exists
+                    - effect: NoSchedule
+                      key: node-role.kubernetes.io/control-plane
+                      operator: Exists
+                  env:
+                    - name: ONEAGENT_ENABLE_VOLUME_STORAGE
+                      value: "false"
+
+              activeGate:
+                # Enables listed ActiveGate capabilities
+                capabilities:
+                  - routing
+                  - kubernetes-monitoring
+
+                resources:
+                  requests:
+                    cpu: 500m
+                    memory: 512Mi
+                  limits:
+                    cpu: 1000m
+                    memory: 1.5Gi    
+            EOF1
+            sleep 10
+
+            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            kubectl create namespace dynatrace
+            kubectl apply -f https://github.com/Dynatrace/dynatrace-operator/releases/latest/download/kubernetes.yaml
+            sleep 10
+            kubectl -n dynatrace wait pod --for=condition=ready -l internal.dynatrace.com/app=webhook --timeout=300s
+            kubectl apply -f /home/ec2-user/dynacube.yaml
+            sudo yum install docker -y
+            sudo service docker start
+            
+
+            
+      - name: create CA project
+        run: |
+            curl -sL https://get.keptn.sh | bash
+            keptn auth --endpoint=${{secrets.DT_CA_URL}}/api --api-token=${{ secrets.CA_TOKEN}} 
+            keptn create project slo-evaluation --shipyard=cloudautomation/shipyard.yaml
+            keptn create service tnt-acer-svc --project=slo-evaluation
+            keptn add-resource --project=slo-evaluation --all-stages --service=tnt-acer-svc --resource=cloudautomation/dynatrace/dynatrace.conf.yaml --resourceUri=dynatrace/dynatrace.conf.yaml 
+
+            
+            
