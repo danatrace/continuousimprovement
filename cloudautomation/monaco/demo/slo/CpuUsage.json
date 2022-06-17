@@ -1,7 +1,7 @@
 {
  "burnRateMetricKey": "func:slo.errorBudgetBurnRate.cpu_usage",
  "denominatorValue": 0,
- "description": "",
+ "description": "Cpu Usage",
  "enabled": true,
  "error": "At least one operand in the given metric expression provides no data.",
  "errorBudget": -1,
