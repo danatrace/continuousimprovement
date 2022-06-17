@@ -47,7 +47,7 @@ spec:
             fieldRef:
               fieldPath: "metadata.labels['deployment']"
         - name: CONTAINER_IMAGE
-          value: "docker.io/danatrace/simplenodeservice:${ct_version}"
+          value: "docker.io/${dockertag}:${ct_version}"
         - name: KEPTN_PROJECT
           value: "slo-evaluation"
         - name: KEPTN_STAGE
