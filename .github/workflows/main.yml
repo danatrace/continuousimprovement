@@ -144,13 +144,16 @@ jobs:
             
 
             
-      - name: create CA project
+      - name: create CA projects
         run: |
             curl -sL https://get.keptn.sh | bash
             keptn auth --endpoint=${{secrets.DT_CA_URL}}/api --api-token=${{ secrets.CA_TOKEN}} 
             keptn create project slo-evaluation --shipyard=cloudautomation/shipyard.yaml
             keptn create service tnt-acer-svc --project=slo-evaluation
-            keptn add-resource --project=slo-evaluation --all-stages --service=tnt-acer-svc --resource=cloudautomation/dynatrace/dynatrace.conf.yaml --resourceUri=dynatrace/dynatrace.conf.yaml 
+            keptn add-resource --project=slo-evaluation --all-stages --service=tnt-acer-svc --resource=cloudautomation/dynatrace/dynatrace.conf.yaml --resourceUri=dynatrace/dynatrace.conf.yaml
+            keptn create project deployment-gates --shipyard=cloudautomation/deploymentgates/shipyard.yaml
+            keptn create service tnt-acer-svc --project=deployment-gates
+            keptn add-resource --project=deployment-gates --all-stages --service=tnt-acer-svc --resource=cloudautomation/dynatrace/dynatrace.conf.yaml --resourceUri=dynatrace/dynatrace.conf.yaml 
 
             
             
