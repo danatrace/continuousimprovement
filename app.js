@@ -16,13 +16,6 @@ var port = process.env.PORT || 8080,
 	keptn_service = process.env.KEPTN_SERVICE || EMPTY,
     html = fs.readFileSync('index.html').toString().replace("HOSTNAME", os.hostname()); //  + " with DT_TAGS=" + dttags + "\nDT_CUSTOM_PROP=" + dtcustprops + "\nDT_CLUSTER_ID=" + dtclusterid);
 
-app.get('/pacman/pacman.js', function (req, res) {
-  res.sendFile(path.join(__dirname, 'pacman', 'pacman.js'));
-});
-
-app.get('/pacman/modernizr-1.5.min.js', function (req, res) {
-  res.sendFile(path.join(__dirname, 'pacman', 'modernizr-1.5.min.js'));
-});
 
 // ======================================================================
 // Here are some global config entries that change the behavior of the app
