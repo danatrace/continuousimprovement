@@ -39,6 +39,27 @@ jobs:
             }
             DATA
             
+            
+      - name: monaco create env file
+        run: |
+           cd cloudautomation/monaco
+           cat << EOF > environments.yaml
+           demo:
+               - name: "demozones"
+               - env-url: "${{ secrets.DT_URL }}"
+               - env-token-name: "DT_API_TOKEN"    
+               
+      - name: run Monaco
+        run: | 
+           export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}
+           cd cloudautomation/monaco
+           curl -L https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/download/v1.7.0/monaco-linux-amd64 -o monaco
+           chmod +x monaco
+           # deploy repo folder
+           sudo mv monaco /usr/local/bin/
+           monaco --environments=environments.yaml -p demozones             
+ 
+           
       - name: monaco create env file
         run: |
            cd cloudautomation/monaco
@@ -57,7 +78,7 @@ jobs:
            chmod +x monaco
            # deploy repo folder
            sudo mv monaco /usr/local/bin/
-           monaco --environments=environments.yaml
+           monaco --environments=environments.yaml -p demo
             
       
       
