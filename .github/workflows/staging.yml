@@ -342,7 +342,7 @@ jobs:
        runs-on: dynatracedemo
        environment:
           name: production-approval
-          url: "${{ github.SERVER_URL }}/${{ github.REPOSITORY }}/actions/workflows/staging.yml"
+          url: "${{ github.SERVER_URL }}/${{ github.REPOSITORY }}/actions/workflows/master.yml"
        needs: [Dynatrace-Slo-Evaluation, Open-Tracking-Issue]
        if: "${{ needs.Dynatrace-Slo-Evaluation.outputs.output1 > 89 }}" 
        steps:             
