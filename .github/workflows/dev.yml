@@ -169,8 +169,7 @@ jobs:
       - name: Run JMeter Action on a test
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
-      #    testFilePath: jmeter/basiccheck.jmx
-          testFilePath: jmeter/simplenodeservice_perfcheck.jmx
+          testFilePath: jmeter/basiccheck.jmx
           outputReportsFolder: reports/
           args: "--loglevel INFO"
         
