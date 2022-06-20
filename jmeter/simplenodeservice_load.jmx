@@ -9,7 +9,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="SERVER_URL" elementType="Argument">
             <stringProp name="Argument.name">SERVER_URL</stringProp>
-            <stringProp name="Argument.value">http://54.145.28.46</stringProp>
+            <stringProp name="Argument.value">http://localhost:8001</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="DefaultThinkTime" elementType="Argument">
