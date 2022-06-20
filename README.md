@@ -28,14 +28,16 @@
   <img src="images/index-create-repo.png" width="300" height="230" />
 <br>
 
-## Fork Continuous Improvement Github Repository
+## Create a Repo from Templace
 
 <br>
 
 * Login to your GitHub account.
 * Navigate to the https://github.com/danatrace/continuousimprovement repo.
-* Use the fork button to create  a fork of the “continuousimprovement” repo in your account.
-* Now, navigate to your new fork. Its name should be: YOUR-USER-NAME/continuousimprovement
+* Click the "use this Template Button", give it any name that you would like.
+* Now, navigate to your new repository. 
+* Create a dev and staging branche from the master Branche, to do so click on the Master Branche Button on the main page
+  of your repository, then click view all branches, click on the New Branche button.
 
 <br>
 
