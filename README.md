@@ -223,7 +223,7 @@
   <img src="images/pasted image 0 (26).png" width="500" height="110" />
 <br>
 
-* Wait until your instance is in “Running” State
+* Wait until your instance has passed the Initializing State and checks have passed.
 * Go back to your Github runner install page and click on Actions - Runners.  The Runner started and should be in Idle state as seen below (with a different ip address than in the picture)
 
   <img src="images/pasted image 0 (28).png" width="500" height="150" />
