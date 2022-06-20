@@ -1,8 +1,0 @@
-config:
-- CpuUsagealert: CpuUsagealert.json
-- HighCPUUsage: HighCPUUsage.json
-CpuUsagealert:
-- name: Cpu Usage  alert
-- name: Cpu Usage  alert
-HighCPUUsage:
-- name: High CPU Usage
