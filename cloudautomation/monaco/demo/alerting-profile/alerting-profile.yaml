@@ -1,7 +1,0 @@
-config:
-- MemoryUsage: MemoryUsage.json
-- Cpuusage: Cpuusage.json
-Cpuusage:
-- name: Cpu usage
-MemoryUsage:
-- name: Memory Usage
