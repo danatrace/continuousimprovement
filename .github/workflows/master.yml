@@ -135,7 +135,7 @@ jobs:
         with:
             issue-number: ${{ needs.Open-Tracking-Issue.outputs.output1 }}
             body: |
-                   Pre Deployment Slo Evaluation has Passed with a Score of ${{ steps.passvariable.outputs.EVALUATION_SCORE }}% <a href="${{env.DT_URL}}/#dashboard;gtf=${{ env.startdate }}+02:00%20to%20${{ env.enddate }}+02:00;gf=${{env.DT_MZ_ID}};id=${{env.DT_PROD_DB_ID}}"> Dynatrace Deployment Readyness Slo Dashboard </a>
+                   Pre Deployment Slo Evaluation has Passed with a Score of ${{ steps.passvariable.outputs.EVALUATION_SCORE }}% <a href="${{env.DT_URL}}/#dashboard;gtf=${{ env.startdate }}+02:00%20to%20${{ env.enddate }}+02:00;gf=${{env.DT_MZ_ID}};id=${{env.DT_PRE_DB_ID}}"> Dynatrace Deployment Readyness Slo Dashboard </a>
 
 
 
