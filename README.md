@@ -271,7 +271,9 @@ The Workflow will create the following Demo Content:
 ## Create Webhooks in Cloudautomation
 
 * Go to your Cloudautomation instance
-* the Install Workflow has created a project called "slo-evaluation" and "deployment-gates" go into the slo-evaluation project and click on settings, in settings click on integrations and chose Webhook-Service
+* the Install Workflow has created a project called "slo-evaluation" and "deployment-gates" go into the slo-evaluation project and click on settings, in settings click on secrets and create a secret called Dynatraceapitoken (a second one to the already existing one, as this one is for the webhook only) with the key DT_API_TOKEN and
+the scope keptn-webhook-service
+* Go back to settings, in settings click on integrations and chose Webhook-Service
 
    <img src="images/webhookservice.png" width="500" height="150" />
 <br>
@@ -282,7 +284,7 @@ The Workflow will create the following Demo Content:
 * Filter by stages dev, staging, production
 * Requst Method POST
 * enter the Url  < your dnyatrace url >/api/v1/entity/infrastructure/custom/custom:releaseevaluationscore
-* add headers accept = application/json, Authorization=Api-Token < your dynatrace api token >, content-type=application/json
+* add headers accept = application/json, Authorization=Api-Token < your dynatrace api token secret > (Chose the key symbol and use the key created ealier), content-type=application/json
 * add Custom Payload
 ```
 {
