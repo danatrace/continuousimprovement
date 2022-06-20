@@ -322,6 +322,12 @@ The Workflow will create the following Demo Content:
     ]
 }
 ```
+* Remove all line breaks from the json file so its a one liner (You can use the one liner below)
+ ```
+ {  "type": "test",  "series": [    {      "timeseriesId": "custom:releaseevaluationscore",      "dimensions": {        "Score" : {{.data.evaluation.score}},        "Result" : "{{.data.result}}",        "Passed" : 0,        "Releaseversion": "{{.data.labels.buildId}}",        "Buildversion": "{{.data.labels.buildId}}",        "Buildnumber":  {{.data.labels.buildId}},        "Evaluationtime": "{{.time}}",        "Application" : "simplenodeservice-{{.data.stage}}"              },      "dataPoints" : [[ {{.data.labels.evaltime}}, {{.data.evaluation.score}} ]]                  }  ]}   
+ ```
+ 
+ 
 
 * Scroll to the bottom of the page and click the "update subcription" button
 * Repeat the same steps as above for the deployment-gates project but with the following content as
@@ -366,7 +372,10 @@ payload:
 }
 
 ```
-
+Here the one liner for the second wehbook
+ ```
+ {  "type": "test",  "series": [    {      "timeseriesId": "custom:releaseevaluationscore",      "dimensions": {        "Score" : {{.data.evaluation.score}},        "Result" : "{{.data.result}}",        "Passed" : 0,        "Releaseversion": "{{.data.labels.buildId}}",        "Buildversion": "{{.data.labels.buildId}}",        "Buildnumber":  {{.data.labels.buildId}},        "Evaluationtime": "{{.time}}",        "Application" : "simplenodeservice-{{.data.stage}}-DG"              },      "dataPoints" : [[ {{.data.labels.evaltime}}, {{.data.evaluation.score}} ]]                  }  ]}   
+ ```
 
 ## Set Workflow Variables
 
