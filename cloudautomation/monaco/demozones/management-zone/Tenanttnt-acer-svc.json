@@ -1,0 +1,144 @@
+{
+ "description": "",
+ "dimensionalRules": [],
+ "entitySelectorBasedRules": [],
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "name": "{{.name}}",
+ "rules": [
+  {
+   "conditions": [
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "ENVIRONMENT",
+       "key": "keptn_service",
+       "value": "tnt-acer-svc"
+      }
+     },
+     "key": {
+      "attribute": "SERVICE_TAGS",
+      "type": "STATIC"
+     }
+    },
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "ENVIRONMENT",
+       "key": "keptn_project",
+       "value": "slo-evaluation"
+      }
+     },
+     "key": {
+      "attribute": "SERVICE_TAGS",
+      "type": "STATIC"
+     }
+    }
+   ],
+   "enabled": true,
+   "propagationTypes": [
+    "SERVICE_TO_HOST_LIKE",
+    "SERVICE_TO_PROCESS_GROUP_LIKE"
+   ],
+   "type": "SERVICE"
+  },
+  {
+   "conditions": [
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "TAG_KEY_EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "CONTEXTLESS",
+       "key": "tnt-acer-svc"
+      }
+     },
+     "key": {
+      "attribute": "HTTP_MONITOR_TAGS",
+      "type": "STATIC"
+     }
+    }
+   ],
+   "enabled": true,
+   "propagationTypes": [],
+   "type": "HTTP_MONITOR"
+  },
+  {
+   "conditions": [
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "TAG_KEY_EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "CONTEXTLESS",
+       "key": "tnt-acer-svc"
+      }
+     },
+     "key": {
+      "attribute": "BROWSER_MONITOR_TAGS",
+      "type": "STATIC"
+     }
+    }
+   ],
+   "enabled": true,
+   "propagationTypes": [],
+   "type": "BROWSER_MONITOR"
+  },
+  {
+   "conditions": [
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "TAG_KEY_EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "CONTEXTLESS",
+       "key": "tnt-acer-svc"
+      }
+     },
+     "key": {
+      "attribute": "BROWSER_MONITOR_TAGS",
+      "type": "STATIC"
+     }
+    }
+   ],
+   "enabled": true,
+   "propagationTypes": [],
+   "type": "BROWSER_MONITOR"
+  },
+  {
+   "conditions": [
+    {
+     "comparisonInfo": {
+      "negate": false,
+      "operator": "TAG_KEY_EQUALS",
+      "type": "TAG",
+      "value": {
+       "context": "ENVIRONMENT",
+       "key": "tnt-acer-svc"
+      }
+     },
+     "key": {
+      "attribute": "HOST_TAGS",
+      "type": "STATIC"
+     }
+    }
+   ],
+   "enabled": true,
+   "propagationTypes": [],
+   "type": "HOST"
+  }
+ ]
+}

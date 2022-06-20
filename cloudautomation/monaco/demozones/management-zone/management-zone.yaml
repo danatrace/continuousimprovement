@@ -1,0 +1,13 @@
+config:
+- Tenanttnt-acer-svc: Tenanttnt-acer-svc.json
+- Tenanttnt-acer-svc-staging: Tenanttnt-acer-svc-staging.json
+- Tenanttnt-acer-svc-prod: Tenanttnt-acer-svc-prod.json
+- Tenanttnt-acer-svc-dev: Tenanttnt-acer-svc-dev.json
+Tenanttnt-acer-svc:
+- name: 'Tenant: tnt-acer-svc'
+Tenanttnt-acer-svc-dev:
+- name: 'Tenant: tnt-acer-svc-dev'
+Tenanttnt-acer-svc-prod:
+- name: 'Tenant: tnt-acer-svc-prod'
+Tenanttnt-acer-svc-staging:
+- name: 'Tenant: tnt-acer-svc-staging'
