@@ -8,7 +8,7 @@ Automated Software Delivery Process. <br>
 The functions outside the SLO Evaluation like Deployments and <br>
 Testing are not necessarily best practise, they were designed to serve the Purpose <br>
 to Quickly Test or Demo the Slo Evaluation Process from Dev to Production without <br>
-having to wait hours for a step like Testing to complete. <br>
+having to wait hours for a delivery step like Testing to complete. <br>
 
 # Prerequisites  
 <br>
