@@ -420,17 +420,9 @@ Here the one liner for the second wehbook
 | GITHUB_PROJECT_URL | https url to the Project of your Github Repo created earlier | 
 | DOCKER_REPO_URL | Link to the Docker Hub Repo created in the first step | 
 | DT_URL | Dynatrace URL | 
-| DT_MZ_ID | Dynatrace Management zone id | the install workflow has created a Management Zone called "tnt-acer-svc" in your Dynatrace instanceyou can get the ID from a Dashboard link where the management zone wa set (gf=246278738970986)
-| DT_DEV_DB_ID | Dynatrace Dev Slo Dashboard id | The Install workflow has created a Dashboard Called KQG;project=slo-evaluation;stage=dev;service=tnt-acer-svc, go to this dashboard and get the id from the url (;id=76196020-e322-42c2-bc82-f7868171247e)
-| DT_STAGING_DB_ID | Dynatrace Staging Slo Dashboard id | The Install workflow has created a Dashboard Called KQG;project=slo-evaluation;stage=staging;service=tnt-acer-svc, go to this dashboard and get the id from the url (;id=76196020-e322-42c2-bc82-f7868171247e)
-| DT_PROD_DB_ID | Dynatrace Production Slo Dashboard id | The Install workflow has created a Dashboard Called KQG;project=slo-evaluation;stage=production;service=tnt-acer-svc, go to this dashboard and get the id from the url (;id=76196020-e322-42c2-bc82-f7868171247e)
-| DOCKER_TAG | Docker tag of your Ducker hub repo created in the first step | 
+| DOCKER_TAG | Docker tag of your Docker hub repo created in the first step | 
 
 
-* Commit the changes with blank commit message
-* Repeat the steps with staging.yml (in dev branche!)
-* Commit the changes with blank commit message
-* Repeat the steps with master.yml (in dev branche!)
 * Commit the change with the following commit message “demo first” This will start the Demo Workflow and Deploy the Initial Application to Dev, Staging
 
 
