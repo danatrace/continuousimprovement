@@ -1,6 +1,5 @@
 # Continuous improvement from Dev to Production"
 <br>
-<br>
 This is a tutorial to setup a sandbox environment that focusses on how "Dynatrace Automated SLO Evaluation"
 can be implemented into an Automated Software Delivery Process.
 <br>
