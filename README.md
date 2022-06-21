@@ -1,5 +1,4 @@
-# Sandbox Setup 
-# "Continuous improvement from Dev to Production"
+# Sandbox Continuous improvement from Dev to Production"
 <br>
 <br>
 
