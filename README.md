@@ -415,12 +415,12 @@ Here the one liner for the second wehbook
 
 * Set the env: variables
 
-|  Variable    | info | Where to find it
-| ----------- | ----------- | ----------- |
-| GITHUB_PROJECT_URL | https url to the Project of your Github Repo created earlier | 
-| DOCKER_REPO_URL | Link to the Docker Hub Repo created in the first step | 
+|  Variable    | info | 
+| ----------- | ----------- | 
+| GITHUB_PROJECT_URL | https url to the Project of your Github Repo created earlier 
+| DOCKER_REPO_URL | Link to the Docker Hub Repo created in the first step 
 | DT_URL | Dynatrace URL | 
-| DOCKER_TAG | Docker tag of your Docker hub repo created in the first step | 
+| DOCKER_TAG | Docker tag of your Docker hub repo created in the first step 
 
 
 * Commit the change with the following commit message “demo first” This will start the Demo Workflow and Deploy the Initial Application to Dev, Staging
