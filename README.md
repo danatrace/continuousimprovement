@@ -1,8 +1,8 @@
 # Continuous improvement from Dev to Production"
 <br>
-This is a tutorial to setup a sandbox environment <br>
-that focusses on how "Dynatrace Automated SLO Evaluation" <br>
-can be implemented into an Automated Software Delivery Process. <br>
+This is a tutorial to setup a sandbox environment that focusses on <br>
+how "Dynatrace Automated SLO Evaluation" can be implemented into an <br>
+Automated Software Delivery Process. <br> 
 <br>
 <br>
 The functions outside the SLO Evaluation like Deployments and <br>
