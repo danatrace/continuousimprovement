@@ -1,4 +1,4 @@
-# Continuous improvement from Dev to Production"
+# Continuous improvement from Dev to Production
 <br>
 This is a tutorial to setup a sandbox environment that focusses on <br>
 how "Dynatrace Automated SLO Evaluation" can be implemented into an <br>
@@ -42,7 +42,7 @@ having to wait hours for a delivery step like Testing to complete. <br>
   <img src="images/index-create-repo.png" width="300" height="230" />
 <br>
 
-## Create a Repo from Templace
+## Create a Repo from Template
 
 <br>
 
