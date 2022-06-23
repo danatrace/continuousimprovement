@@ -1,4 +1,8 @@
 # Continuous improvement from Dev to Production
+
+ <img src="images/cldemo.jpg" width="300" height="230" />
+
+
 <br>
 This is a tutorial to setup a sandbox environment that focusses on <br>
 how "Dynatrace Automated SLO Evaluation" can be implemented into an <br>
