@@ -362,7 +362,7 @@
     "width": 342
    },
    "configured": true,
-   "markdown": "### Releases\n+ [ 🚦 Cloudautomation ]({{ .Env.CA_UR }}/bridge/project/slo-evaluation/sequence)\n+ [💾 GitOps repo](https://github.com/{{ .Env.GH_REPO}}\n+ [💾 Github Actions](https://github.com/{{ .Env.GH_REPO}}/actions)\n+ [💾 Github Project](https://github.com/{{ .Env.GH_REPO}}/projects/1)\n+ [🚀 Release Inventory](/ui/releases?gtf=-30m\u0026gf=all\u0026invsc=version\u0026invsd=desc) \n",
+   "markdown": "### Releases\n+ [ 🚦 Cloudautomation ]({{ .Env.CA_URL }}/bridge/project/slo-evaluation/sequence)\n+ [💾 GitOps repo](https://github.com/{{ .Env.GH_REPO}}\n+ [💾 Github Actions](https://github.com/{{ .Env.GH_REPO}}/actions)\n+ [💾 Github Project](https://github.com/{{ .Env.GH_REPO}}/projects/1)\n+ [🚀 Release Inventory](/ui/releases?gtf=-30m\u0026gf=all\u0026invsc=version\u0026invsd=desc) \n",
    "name": "Markdown",
    "nameSize": null,
    "tileFilter": {
