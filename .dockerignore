@@ -1,2 +1,12 @@
 node_modules
 npm-debug.log
+images/*
+audio/*
+aws/*
+jmeter/*
+jenkins/*
+kubernetes/*
+slo/*
+cloudautomation/*
+helpers/*
+.github/*

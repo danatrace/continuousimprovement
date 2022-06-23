@@ -1,0 +1,34 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.rabbitmq",
+ "name": "{{.name}}",
+ "properties": [
+  {
+   "defaultValue": "15672",
+   "key": "port",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "auth_user",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "queues",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "auth_password",
+   "type": "PASSWORD"
+  }
+ ],
+ "type": "ONEAGENT",
+ "version": "2.024"
+}

@@ -1,3 +1,17 @@
+# Continuous improvement from Dev to Production
+<br>
+This is a tutorial to setup a sandbox environment that focusses on <br>
+how "Dynatrace Automated SLO Evaluation" can be implemented into an <br>
+Automated Software Delivery Process. <br> 
+<br>
+<br>
+The functions outside the SLO Evaluation like Deployments and <br>
+Testing are not necessarily best practise, they were designed to serve the Purpose <br>
+to Quickly Test or Demo the Slo Evaluation Process from Dev to Production without <br>
+having to wait hours for a delivery step like Testing to complete. <br>
+<br>
+
+
 # Prerequisites  
 <br>
  
@@ -11,6 +25,10 @@
 | AWS  | Account      |
 | Dockerhub  | Account, Access Token      |
 | Github  | Account, Personal Access Token      |
+
+<br>
+Note! You can save some time if you collect all the needed URLs and Api-Tokens Pre Sandbox Installation.
+      Store them safely with keepaas https://keepass.info/
 
 <br>
 
@@ -28,7 +46,7 @@
   <img src="images/index-create-repo.png" width="300" height="230" />
 <br>
 
-## Create a Repo from Templace
+## Create a Repo from Template
 
 <br>
 
@@ -36,8 +54,6 @@
 * Navigate to the https://github.com/danatrace/continuousimprovement repo.
 * Click the "use this Template Button", give it any name that you would like.
 * Now, navigate to your new repository. 
-* Create a dev and staging branche from the master Branche, to do so click on the Master Branche Button on the main page
-  of your repository, then click view all branches, click on the New Branche button.
 
 <br>
 
@@ -379,10 +395,17 @@ Here the one liner for the second wehbook
  {  "type": "test",  "series": [    {      "timeseriesId": "custom:releaseevaluationscore",      "dimensions": {        "Score" : {{.data.evaluation.score}},        "Result" : "{{.data.result}}",        "Passed" : 0,        "Releaseversion": "{{.data.labels.buildId}}",        "Buildversion": "{{.data.labels.buildId}}",        "Buildnumber":  {{.data.labels.buildId}},        "Evaluationtime": "{{.time}}",        "Application" : "simplenodeservice-{{.data.stage}}-DG"              },      "dataPoints" : [[ {{.data.labels.evaltime}}, {{.data.evaluation.score}} ]]                  }  ]}   
  ```
 
+## Create Github Branches for Staging and Dev
+ 
+* Navigate to the main page of your repository 
+* Create a "dev" and "staging" branche from the master Branche, to do so click on the Master Branche Button on the main page
+  of your repository, then click view all branches, click on the New Branche button. 
+ 
+ 
 ## Set Workflow Variables
 
 * Navigate to the home of your Github Repository
-* Change Current Branche to “Dev”
+* Change Current Branche to “dev”
 
    <img src="images/pasted image 0 (33).png" width="150" height="50" />
 <br>
@@ -403,22 +426,14 @@ Here the one liner for the second wehbook
 
 * Set the env: variables
 
-|  Variable    | info | Where to find it
-| ----------- | ----------- | ----------- |
-| GITHUB_PROJECT_URL | https url to the Project of your Github Repo created earlier | 
-| DOCKER_REPO_URL | Link to the Docker Hub Repo created in the first step | 
+|  Variable    | info | 
+| ----------- | ----------- | 
+| GITHUB_PROJECT_URL | https url to the Project of your Github Repo created earlier 
+| DOCKER_REPO_URL | Link to the Docker Hub Repo created in the first step 
 | DT_URL | Dynatrace URL | 
-| DT_MZ_ID | Dynatrace Management zone id | the install workflow has created a Management Zone called "tnt-acer-svc" in your Dynatrace instanceyou can get the ID from a Dashboard link where the management zone wa set (gf=246278738970986)
-| DT_DEV_DB_ID | Dynatrace Dev Slo Dashboard id | The Install workflow has created a Dashboard Called KQG;project=slo-evaluation;stage=dev;service=tnt-acer-svc, go to this dashboard and get the id from the url (;id=76196020-e322-42c2-bc82-f7868171247e)
-| DT_STAGING_DB_ID | Dynatrace Staging Slo Dashboard id | The Install workflow has created a Dashboard Called KQG;project=slo-evaluation;stage=staging;service=tnt-acer-svc, go to this dashboard and get the id from the url (;id=76196020-e322-42c2-bc82-f7868171247e)
-| DT_PROD_DB_ID | Dynatrace Production Slo Dashboard id | The Install workflow has created a Dashboard Called KQG;project=slo-evaluation;stage=production;service=tnt-acer-svc, go to this dashboard and get the id from the url (;id=76196020-e322-42c2-bc82-f7868171247e)
-| DOCKER_TAG | Docker tag of your Ducker hub repo created in the first step | 
+| DOCKER_TAG | Docker tag of your Docker hub repo created in the first step 
 
 
-* Commit the changes with blank commit message
-* Repeat the steps with staging.yml (in dev branche!)
-* Commit the changes with blank commit message
-* Repeat the steps with master.yml (in dev branche!)
 * Commit the change with the following commit message “demo first” This will start the Demo Workflow and Deploy the Initial Application to Dev, Staging
 
 

@@ -22,9 +22,15 @@ jobs:
       - uses: actions/checkout@v2
         with:
            ref: 'master'
-           
+       
+       ## Create Custom Metric in Dynatrace for Release Evaluation Score
       - name: create custom metric
         run: |
+            sudo yum update -y
+            sudo yum install git -y
+            sudo yum install curl -y
+            sudo yum install jq -y
+            sudo yum install tree -y        
             curl -X PUT ${{ secrets.DT_API_URL }}/v1/timeseries/custom:releaseevaluationscore -H "Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}" -H "Content-Type: application/json" --data-binary @- <<DATA
             {
                 "timeseriesId": "custom:releaseevaluationscore",
@@ -38,8 +44,8 @@ jobs:
                 "warnings": []
             }
             DATA
-            
-            
+
+
       - name: monaco create env file
         run: |
            cd cloudautomation/monaco
@@ -48,18 +54,29 @@ jobs:
                - name: "demozones"
                - env-url: "${{ secrets.DT_URL }}"
                - env-token-name: "DT_API_TOKEN"    
-               
+
+
       - name: run Monaco
         run: | 
-           export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}
+           export DEV_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=slo-evaluation;stage=dev;service=tnt-acer-svc"))| .[0].id')
+           export STAGING_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=slo-evaluation;stage=staging;service=tnt-acer-svc"))| .[0].id')
+           export PROD_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=slo-evaluation;stage=production;service=tnt-acer-svc"))| .[0].id')
+           export PRE_PROD_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=deployment-gates;stage=production;service=tnt-acer-svc"))| .[0].id')
+           export MGM_ZN=$(curl -L -X GET '${{ secrets.DT_API_URL }}/config/v1/managementZones' -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "Tenant: tnt-acer-svc")) | .[0].id')
+           export PUB_IP=$(curl http://checkip.amazonaws.com) 
+           export GH_REPO=${{ github.repository }}
+           export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}    
+           export CA_URL=${{secrets.DT_CA_URL}}
            cd cloudautomation/monaco
            curl -L https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/download/v1.7.0/monaco-linux-amd64 -o monaco
            chmod +x monaco
            # deploy repo folder
            sudo mv monaco /usr/local/bin/
-           monaco --environments=environments.yaml -p demozones             
- 
-           
+           monaco --environments=environments.yaml -p demozones       
+     
+     
+     
+     ## Create Monaco Environment File
       - name: monaco create env file
         run: |
            cd cloudautomation/monaco
@@ -69,20 +86,29 @@ jobs:
                - env-url: "${{ secrets.DT_URL }}"
                - env-token-name: "DT_API_TOKEN"    
                
-    
+               
+      # Run Monaco Import Management Zones
       - name: run Monaco
         run: | 
-           export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}
-           cd cloudautomation/monaco
-           curl -L https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/download/v1.7.0/monaco-linux-amd64 -o monaco
-           chmod +x monaco
-           # deploy repo folder
-           sudo mv monaco /usr/local/bin/
-           monaco --environments=environments.yaml -p demo
+            export DEV_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=slo-evaluation;stage=dev;service=tnt-acer-svc"))| .[0].id')
+            export STAGING_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=slo-evaluation;stage=staging;service=tnt-acer-svc"))| .[0].id')
+            export PROD_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=slo-evaluation;stage=production;service=tnt-acer-svc"))| .[0].id')
+            export PRE_PROD_DB_ID=$(curl -X GET ${{ secrets.DT_API_URL }}/config/v1/dashboards -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "KQG;project=deployment-gates;stage=production;service=tnt-acer-svc"))| .[0].id')
+            export MGM_ZN=$(curl -L -X GET '${{ secrets.DT_API_URL }}/config/v1/managementZones' -H 'Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}' | jq -r '.[] | map(select(.name == "Tenant: tnt-acer-svc")) | .[0].id')
+            export PUB_IP=$(curl http://checkip.amazonaws.com) 
+            export GH_REPO=${{ github.repository }}
+            export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}
+            export CA_URL=${{secrets.DT_CA_URL}}
+            cd cloudautomation/monaco
+            curl -L https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/download/v1.7.0/monaco-linux-amd64 -o monaco
+            chmod +x monaco
+            # deploy repo folder
+            sudo mv monaco /usr/local/bin/
+            monaco --environments=environments.yaml -p demo
             
       
       
-      - name: Uninstall Rancher if Exists
+      - name: Uninstall k3s if Exists
         run: k3s-uninstall.sh || true
       - name: install dynatrace Agent
         run: |        
@@ -90,17 +116,14 @@ jobs:
             wget https://ca.dynatrace.com/dt-root.cert.pem ; ( echo 'Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="--SIGNED-INSTALLER"'; echo ; echo ; echo '----SIGNED-INSTALLER' ; cat Dynatrace-OneAgent-Linux-1.241.212.sh ) | openssl cms -verify -CAfile dt-root.cert.pem > /dev/null
             /bin/sh Dynatrace-OneAgent-Linux-1.241.212.sh --set-infra-only=false --set-app-log-content-access=true --set-host-tag=tnt-acer-svc
 
-      # Runs a set of commands using the runners shell
-      - name: Install Rancher on AWS linux
+      ## Install K3s single node Kubernetes Cluster
+      - name: Install k3s on AWS linux
         run: |
           KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-          sudo yum update -y
-          sudo yum install git -y
-          sudo yum install curl -y
-          sudo yum install jq -y
-          sudo yum install tree -y
           cd /home/ec2-user/
           curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 64
+          
+      ## Install Dynatrace Active Gate on Kubernetes Cluster    
       - name: Install Dynatrace Active Gate
         run: |
             #!/bin/bash
@@ -164,7 +187,7 @@ jobs:
             sudo service docker start
             
 
-            
+        # Create Cloudautomation Projects    
       - name: create CA projects
         run: |
             curl -sL https://get.keptn.sh | bash

@@ -1,12 +1,6 @@
 {
  "dashboardMetadata": {
-  "dashboardFilter": {
-   "managementZone": {
-    "id": "2462787389709860009",
-    "name": "Tenant: tnt-acer-svc"
-   },
-   "timeframe": null
-  },
+  "dashboardFilter": null,
   "name": "KQG;project=slo-evaluation;stage=production;service=tnt-acer-svc",
   "owner": "daniel.braaf@gmail.com",
   "popularity": 1,
@@ -621,24 +615,6 @@
     ],
     "type": "GRAPH_CHART"
    }
-  },
-  {
-   "bounds": {
-    "height": 304,
-    "left": 38,
-    "top": 494,
-    "width": 304
-   },
-   "configured": true,
-   "entitySelector": null,
-   "name": "Detected Problems",
-   "nameSize": null,
-   "problemSelector": null,
-   "tileFilter": {
-    "managementZone": null,
-    "timeframe": "-7d to now"
-   },
-   "tileType": "OPEN_PROBLEMS"
   },
   {
    "bounds": {
@@ -1446,9 +1422,9 @@
   {
    "bounds": {
     "height": 304,
-    "left": 342,
+    "left": 38,
     "top": 494,
-    "width": 912
+    "width": 1216
    },
    "configured": true,
    "customName": "Single value",

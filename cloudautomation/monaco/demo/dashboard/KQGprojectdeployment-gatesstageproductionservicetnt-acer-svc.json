@@ -1,15 +1,9 @@
 {
  "dashboardMetadata": {
-  "dashboardFilter": {
-   "managementZone": {
-    "id": "2462787389709860009",
-    "name": "Tenant: tnt-acer-svc"
-   },
-   "timeframe": null
-  },
+  "dashboardFilter": null,
   "name": "KQG;project=deployment-gates;stage=production;service=tnt-acer-svc",
   "owner": "daniel.braaf@gmail.com",
-  "popularity": 4,
+  "popularity": 1,
   "shared": false,
   "tags": [
    "kqg",
@@ -758,7 +752,7 @@
   },
   {
    "bounds": {
-    "height": 152,
+    "height": 304,
     "left": 1292,
     "top": 38,
     "width": 304
@@ -896,24 +890,6 @@
     ],
     "type": "GRAPH_CHART"
    }
-  },
-  {
-   "bounds": {
-    "height": 152,
-    "left": 1292,
-    "top": 190,
-    "width": 304
-   },
-   "configured": true,
-   "entitySelector": null,
-   "name": "Problems",
-   "nameSize": null,
-   "problemSelector": null,
-   "tileFilter": {
-    "managementZone": null,
-    "timeframe": "-24h to now"
-   },
-   "tileType": "OPEN_PROBLEMS"
   },
   {
    "bounds": {

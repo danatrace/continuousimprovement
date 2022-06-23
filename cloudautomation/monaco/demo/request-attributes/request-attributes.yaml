@@ -1,0 +1,40 @@
+config:
+- LoadScriptName: LoadScriptName.json
+- JobType: JobType.json
+- LoyaltyStatus: LoyaltyStatus.json
+- Destination: Destination.json
+- TSN: TSN.json
+- Developer: Developer.json
+- TestStepName: TestStepName.json
+- CartNumber: CartNumber.json
+- LTN: LTN.json
+- Revenue: Revenue.json
+- LoadTestName: LoadTestName.json
+- BankName: BankName.json
+- LSN: LSN.json
+BankName:
+- name: BankName
+CartNumber:
+- name: CartNumber
+Destination:
+- name: Destination
+Developer:
+- name: Developer
+JobType:
+- name: JobType
+LSN:
+- name: LSN
+LTN:
+- name: LTN
+LoadScriptName:
+- name: LoadScriptName
+LoadTestName:
+- name: LoadTestName
+LoyaltyStatus:
+- name: Loyalty Status
+Revenue:
+- name: Revenue
+TSN:
+- name: TSN
+TestStepName:
+- name: TestStepName

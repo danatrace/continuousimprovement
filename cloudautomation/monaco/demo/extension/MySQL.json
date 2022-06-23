@@ -1,0 +1,29 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.mysql",
+ "name": "{{.name}}",
+ "properties": [
+  {
+   "defaultValue": "",
+   "key": "connection_user",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "connection_password",
+   "type": "PASSWORD"
+  },
+  {
+   "defaultValue": "3306",
+   "key": "connection_port",
+   "type": "INTEGER"
+  }
+ ],
+ "type": "ONEAGENT",
+ "version": "2.010"
+}

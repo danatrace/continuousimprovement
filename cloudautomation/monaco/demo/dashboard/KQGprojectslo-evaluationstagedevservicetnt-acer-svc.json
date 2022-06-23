@@ -1,15 +1,9 @@
 {
  "dashboardMetadata": {
-  "dashboardFilter": {
-   "managementZone": {
-    "id": "2462787389709860009",
-    "name": "Tenant: tnt-acer-svc"
-   },
-   "timeframe": null
-  },
+  "dashboardFilter": null,
   "name": "KQG;project=slo-evaluation;stage=dev;service=tnt-acer-svc",
   "owner": "daniel.braaf@gmail.com",
-  "popularity": 10,
+  "popularity": 2,
   "shared": false,
   "tags": [
    "kqg",
@@ -1072,25 +1066,7 @@
     "height": 304,
     "left": 304,
     "top": 494,
-    "width": 304
-   },
-   "configured": true,
-   "entitySelector": null,
-   "name": "Problems Davis",
-   "nameSize": "large",
-   "problemSelector": null,
-   "tileFilter": {
-    "managementZone": null,
-    "timeframe": null
-   },
-   "tileType": "OPEN_PROBLEMS"
-  },
-  {
-   "bounds": {
-    "height": 304,
-    "left": 608,
-    "top": 494,
-    "width": 532
+    "width": 380
    },
    "configured": true,
    "customName": "Response time (P95);sli=svc_rt_p95;pass=\u003c600",
@@ -1328,9 +1304,9 @@
   {
    "bounds": {
     "height": 304,
-    "left": 1140,
+    "left": 1178,
     "top": 494,
-    "width": 494
+    "width": 456
    },
    "configured": true,
    "customName": "Host CPU %;sli=host_cpu;pass=\u003c20;warning=\u003c50;key=false",
@@ -1799,6 +1775,134 @@
      }
     ],
     "type": "SINGLE_VALUE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 304,
+    "left": 684,
+    "top": 494,
+    "width": 494
+   },
+   "configured": true,
+   "customName": "Data explorer results",
+   "name": "Jmeter Test Step Executions",
+   "nameSize": null,
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": {
+      "criteria": [],
+      "entityAttribute": null,
+      "filter": null,
+      "filterOperator": null,
+      "filterType": null,
+      "globalEntity": null,
+      "nestedFilters": []
+     },
+     "foldTransformation": null,
+     "id": "A",
+     "limit": 100,
+     "metric": "calc:service.jmeterrequestcountperversiondev",
+     "metricSelector": null,
+     "sortBy": "DESC",
+     "spaceAggregation": null,
+     "splitBy": [
+      "Dimension"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": null,
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": null
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": "",
+      "visible": true
+     },
+     "yAxes": [
+      {
+       "defaultAxis": true,
+       "displayName": "",
+       "max": "AUTO",
+       "min": "AUTO",
+       "position": "LEFT",
+       "queryIds": [
+        "A"
+       ],
+       "visible": true
+      }
+     ]
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": false
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "STACKED_COLUMN"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": false
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": "Jmeter Request Count Per Version Dev",
+      "queryId": "A",
+      "rules": [
+       {
+        "color": "#7dc540",
+        "value": null
+       },
+       {
+        "color": "#f5d30f",
+        "value": null
+       },
+       {
+        "color": "#dc172a",
+        "value": null
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "STACKED_COLUMN"
    }
   }
  ]

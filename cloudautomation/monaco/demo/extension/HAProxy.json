@@ -1,0 +1,34 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.haproxy",
+ "name": "{{.name}}",
+ "properties": [
+  {
+   "defaultValue": "false",
+   "key": "socket_mode",
+   "type": "BOOLEAN"
+  },
+  {
+   "defaultValue": "",
+   "key": "auth_user",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "auth_password",
+   "type": "PASSWORD"
+  },
+  {
+   "defaultValue": "",
+   "key": "url",
+   "type": "STRING"
+  }
+ ],
+ "type": "ONEAGENT",
+ "version": "2.029"
+}
