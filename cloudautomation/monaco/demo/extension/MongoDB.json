@@ -1,0 +1,34 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.mongodb",
+ "name": "{{.name}}",
+ "properties": [
+  {
+   "defaultValue": "",
+   "key": "auth_db",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "27017",
+   "key": "port",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "auth_user",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "auth_password",
+   "type": "PASSWORD"
+  }
+ ],
+ "type": "ONEAGENT",
+ "version": "2.0200"
+}

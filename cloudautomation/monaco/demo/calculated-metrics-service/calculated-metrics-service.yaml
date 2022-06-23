@@ -1,0 +1,31 @@
+config:
+- JmeterTestRequestCountperVersion: JmeterTestRequestCountperVersion.json
+- JmeterRequestCountPerVersionDev: JmeterRequestCountPerVersionDev.json
+- JmeterTestRequestCountPerVersionStaging: JmeterTestRequestCountPerVersionStaging.json
+- TestResponseTimebyBuildversion: TestResponseTimebyBuildversion.json
+- TestResponseTimebyversionandstage: TestResponseTimebyversionandstage.json
+- JmeterTestResponseTimeperVersionStaging: JmeterTestResponseTimeperVersionStaging.json
+- JmeterTestResponseTimeDev: JmeterTestResponseTimeDev.json
+- JmeterresponsetimeperVersionDev: JmeterresponsetimeperVersionDev.json
+- JmeterRequestCountdev: JmeterRequestCountdev.json
+- JmeterTestCputimeperTestStepperversionDev: JmeterTestCputimeperTestStepperversionDev.json
+JmeterRequestCountPerVersionDev:
+- name: Jmeter Request Count Per Version Dev
+JmeterRequestCountdev:
+- name: Jmeter Request Count dev
+JmeterTestCputimeperTestStepperversionDev:
+- name: Jmeter Test Cpu time per Test Step per version Dev
+JmeterTestRequestCountPerVersionStaging:
+- name: Jmeter Test Request Count Per Version Staging
+JmeterTestRequestCountperVersion:
+- name: Jmeter Test Request Count per Version
+JmeterTestResponseTimeDev:
+- name: Jmeter Test Response Time Dev
+JmeterTestResponseTimeperVersionStaging:
+- name: Jmeter Test Response Time per Version Staging
+JmeterresponsetimeperVersionDev:
+- name: Jmeter response time per Version Dev
+TestResponseTimebyBuildversion:
+- name: Test Response Time by Buildversion
+TestResponseTimebyversionandstage:
+- name: Test Response Time by version and stage

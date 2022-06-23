@@ -1,0 +1,97 @@
+config:
+- ApacheHadoopHDFS: ApacheHadoopHDFS.json
+- ApacheHadoopYARN: ApacheHadoopYARN.json
+- ActiveMQJMX: ActiveMQJMX.json
+- JettyJMX: JettyJMX.json
+- CassandraJMX: CassandraJMX.json
+- HornetQJMX: HornetQJMX.json
+- JBossConnectionPools: JBossConnectionPools.json
+- KafkaJMX: KafkaJMX.json
+- WebSphereLibertyAppserver: WebSphereLibertyAppserver.json
+- WebSphereLibertyConnectionPools: WebSphereLibertyConnectionPools.json
+- NetflixOSSJMX: NetflixOSSJMX.json
+- SolrJMX: SolrJMX.json
+- ApacheSpark: ApacheSpark.json
+- TomcatConnectionPools: TomcatConnectionPools.json
+- WebLogicConnectionPools: WebLogicConnectionPools.json
+- WSO2APIManager: WSO2APIManager.json
+- CoreDNS: CoreDNS.json
+- Couchbase: Couchbase.json
+- CouchDB: CouchDB.json
+- Dockertechnologymonitoring: Dockertechnologymonitoring.json
+- Elasticsearch: Elasticsearch.json
+- HAProxy: HAProxy.json
+- Memcached: Memcached.json
+- MongoDB: MongoDB.json
+- MSSQL: MSSQL.json
+- MySQL: MySQL.json
+- NTP: NTP.json
+- PHP-FPM: PHP-FPM.json
+- PostgreSQL: PostgreSQL.json
+- RabbitMQ: RabbitMQ.json
+- Redis: Redis.json
+- ElasticsearchCloud: ElasticsearchCloud.json
+ActiveMQJMX:
+- name: ActiveMQ JMX
+ApacheHadoopHDFS:
+- name: Apache Hadoop HDFS
+ApacheHadoopYARN:
+- name: Apache Hadoop YARN
+ApacheSpark:
+- name: Apache Spark
+CassandraJMX:
+- name: Cassandra JMX
+CoreDNS:
+- name: CoreDNS
+CouchDB:
+- name: CouchDB
+Couchbase:
+- name: Couchbase
+Dockertechnologymonitoring:
+- name: Docker technology monitoring
+Elasticsearch:
+- name: Elasticsearch
+ElasticsearchCloud:
+- name: Elasticsearch Cloud
+HAProxy:
+- name: HAProxy
+HornetQJMX:
+- name: HornetQ JMX
+JBossConnectionPools:
+- name: JBoss Connection Pools
+JettyJMX:
+- name: Jetty JMX
+KafkaJMX:
+- name: Kafka JMX
+MSSQL:
+- name: MS SQL
+Memcached:
+- name: Memcached
+MongoDB:
+- name: MongoDB
+MySQL:
+- name: MySQL
+NTP:
+- name: NTP
+NetflixOSSJMX:
+- name: Netflix OSS JMX
+PHP-FPM:
+- name: PHP-FPM
+PostgreSQL:
+- name: PostgreSQL
+RabbitMQ:
+- name: RabbitMQ
+Redis:
+- name: Redis
+SolrJMX:
+- name: Solr JMX
+TomcatConnectionPools:
+- name: Tomcat Connection Pools
+WSO2APIManager:
+- name: WSO2 API Manager
+WebLogicConnectionPools:
+- name: WebLogic Connection Pools
+WebSphereLibertyAppserver:
+- name: WebSphere Liberty Appserver
+WebSphereLibertyConnectionPools:
+- name: WebSphere Liberty Connection Pools

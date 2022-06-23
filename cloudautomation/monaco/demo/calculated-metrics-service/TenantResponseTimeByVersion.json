@@ -1,0 +1,42 @@
+{
+ "conditions": [
+  {
+   "attribute": "SERVICE_TAG",
+   "comparisonInfo": {
+    "comparison": "TAG_KEY_EQUALS",
+    "negate": false,
+    "type": "TAG",
+    "value": {
+     "context": "ENVIRONMENT",
+     "key": "DT_APPLICATION_RELEASE_VERSION"
+    },
+    "values": null
+   }
+  }
+ ],
+ "dimensionDefinition": {
+  "dimension": "{Request:ApplicationReleaseVersion}",
+  "name": "version",
+  "placeholders": [],
+  "topX": 10,
+  "topXAggregation": "SUM",
+  "topXDirection": "DESCENDING"
+ },
+ "enabled": true,
+ "entityId": null,
+ "managementZones": [],
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricDefinition": {
+  "metric": "RESPONSE_TIME",
+  "requestAttribute": null
+ },
+ "name": "{{.name}}",
+ "tsmMetricKey": "calc:service.tenant.responsetime.byversion",
+ "unit": "MICRO_SECOND",
+ "unitDisplayName": ""
+}

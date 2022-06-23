@@ -1,15 +1,9 @@
 {
  "dashboardMetadata": {
-  "dashboardFilter": {
-   "managementZone": {
-    "id": "2462787389709860009",
-    "name": "Tenant: tnt-acer-svc"
-   },
-   "timeframe": null
-  },
+  "dashboardFilter": null,
   "name": "KQG;project=slo-evaluation;stage=staging;service=tnt-acer-svc",
   "owner": "daniel.braaf@gmail.com",
-  "popularity": 5,
+  "popularity": 1,
   "shared": false,
   "tags": [
    "kqg",
@@ -1069,25 +1063,7 @@
   },
   {
    "bounds": {
-    "height": 304,
-    "left": 38,
-    "top": 494,
-    "width": 304
-   },
-   "configured": true,
-   "entitySelector": null,
-   "name": "Detected Problems",
-   "nameSize": null,
-   "problemSelector": null,
-   "tileFilter": {
-    "managementZone": null,
-    "timeframe": null
-   },
-   "tileType": "OPEN_PROBLEMS"
-  },
-  {
-   "bounds": {
-    "height": 380,
+    "height": 228,
     "left": 1254,
     "top": 38,
     "width": 456
@@ -1216,7 +1192,7 @@
    },
    "tileFilter": {
     "managementZone": null,
-    "timeframe": null
+    "timeframe": "-24h to now"
    },
    "tileType": "DATA_EXPLORER",
    "visualConfig": {
@@ -1381,7 +1357,7 @@
      "id": "all",
      "name": "All"
     },
-    "timeframe": "-6h"
+    "timeframe": "-24h to now"
    },
    "tileType": "DATA_EXPLORER",
    "visualConfig": {
@@ -1461,9 +1437,9 @@
   {
    "bounds": {
     "height": 304,
-    "left": 342,
+    "left": 38,
     "top": 494,
-    "width": 912
+    "width": 1216
    },
    "configured": true,
    "customName": "Single value",
@@ -1692,9 +1668,9 @@
   },
   {
    "bounds": {
-    "height": 380,
+    "height": 304,
     "left": 1254,
-    "top": 418,
+    "top": 494,
     "width": 456
    },
    "configured": true,
@@ -1794,7 +1770,7 @@
    },
    "tileFilter": {
     "managementZone": null,
-    "timeframe": null
+    "timeframe": "-24h to now"
    },
    "tileType": "DATA_EXPLORER",
    "visualConfig": {
@@ -1913,6 +1889,134 @@
      }
     ],
     "type": "GRAPH_CHART"
+   }
+  },
+  {
+   "bounds": {
+    "height": 228,
+    "left": 1254,
+    "top": 266,
+    "width": 456
+   },
+   "configured": true,
+   "customName": "Data explorer results",
+   "name": "Jmeter Test Step Executions",
+   "nameSize": null,
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": {
+      "criteria": [],
+      "entityAttribute": null,
+      "filter": null,
+      "filterOperator": null,
+      "filterType": null,
+      "globalEntity": null,
+      "nestedFilters": []
+     },
+     "foldTransformation": null,
+     "id": "A",
+     "limit": 100,
+     "metric": "calc:service.jmetertestrequestcountperversionstaging",
+     "metricSelector": null,
+     "sortBy": "DESC",
+     "spaceAggregation": null,
+     "splitBy": [
+      "Dimension"
+     ],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": null,
+    "resolution": "1m"
+   },
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": "-10m"
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": "",
+      "visible": true
+     },
+     "yAxes": [
+      {
+       "defaultAxis": true,
+       "displayName": "",
+       "max": "AUTO",
+       "min": "AUTO",
+       "position": "LEFT",
+       "queryIds": [
+        "A"
+       ],
+       "visible": true
+      }
+     ]
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": false
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": "STACKED_COLUMN"
+      },
+      "seriesOverrides": [],
+      "unitTransform": "",
+      "valueFormat": "auto"
+     }
+    ],
+    "singleValueSettings": null,
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": false
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": "Jmeter Request Count Per Version Dev",
+      "queryId": "A",
+      "rules": [
+       {
+        "color": "#7dc540",
+        "value": null
+       },
+       {
+        "color": "#f5d30f",
+        "value": null
+       },
+       {
+        "color": "#dc172a",
+        "value": null
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "STACKED_COLUMN"
    }
   }
  ]

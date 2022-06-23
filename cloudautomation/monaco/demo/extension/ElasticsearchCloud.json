@@ -1,0 +1,29 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.elasticsearch.remote",
+ "name": "{{.name}}",
+ "properties": [
+  {
+   "defaultValue": "",
+   "key": "auth_user",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "auth_password",
+   "type": "PASSWORD"
+  },
+  {
+   "defaultValue": "",
+   "key": "url",
+   "type": "STRING"
+  }
+ ],
+ "type": "ACTIVEGATE",
+ "version": "1.94"
+}

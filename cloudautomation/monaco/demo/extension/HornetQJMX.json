@@ -1,0 +1,13 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.hornetq",
+ "name": "{{.name}}",
+ "properties": [],
+ "type": "JMX",
+ "version": "1.794"
+}

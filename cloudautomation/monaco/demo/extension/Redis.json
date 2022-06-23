@@ -1,0 +1,29 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.redis",
+ "name": "{{.name}}",
+ "properties": [
+  {
+   "defaultValue": "",
+   "key": "auth_password",
+   "type": "PASSWORD"
+  },
+  {
+   "defaultValue": "/usr/local/etc/redis/redis.conf",
+   "key": "cfg_file_location",
+   "type": "STRING"
+  },
+  {
+   "defaultValue": "",
+   "key": "cfg_port",
+   "type": "STRING"
+  }
+ ],
+ "type": "ONEAGENT",
+ "version": "2.019"
+}

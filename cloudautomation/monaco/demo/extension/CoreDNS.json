@@ -1,0 +1,19 @@
+{
+ "metadata": {
+  "clusterVersion": "1.243.146.20220615-081647",
+  "configurationVersions": [
+   0
+  ]
+ },
+ "metricGroup": "tech.coredns",
+ "name": "{{.name}}",
+ "properties": [
+  {
+   "defaultValue": "",
+   "key": "prometheus_endpoint",
+   "type": "STRING"
+  }
+ ],
+ "type": "ONEAGENT",
+ "version": "1.003"
+}
