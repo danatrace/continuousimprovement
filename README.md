@@ -50,8 +50,6 @@ having to wait hours for a delivery step like Testing to complete. <br>
 * Navigate to the https://github.com/danatrace/continuousimprovement repo.
 * Click the "use this Template Button", give it any name that you would like.
 * Now, navigate to your new repository. 
-* Create a dev and staging branche from the master Branche, to do so click on the Master Branche Button on the main page
-  of your repository, then click view all branches, click on the New Branche button.
 
 <br>
 
@@ -393,10 +391,17 @@ Here the one liner for the second wehbook
  {  "type": "test",  "series": [    {      "timeseriesId": "custom:releaseevaluationscore",      "dimensions": {        "Score" : {{.data.evaluation.score}},        "Result" : "{{.data.result}}",        "Passed" : 0,        "Releaseversion": "{{.data.labels.buildId}}",        "Buildversion": "{{.data.labels.buildId}}",        "Buildnumber":  {{.data.labels.buildId}},        "Evaluationtime": "{{.time}}",        "Application" : "simplenodeservice-{{.data.stage}}-DG"              },      "dataPoints" : [[ {{.data.labels.evaltime}}, {{.data.evaluation.score}} ]]                  }  ]}   
  ```
 
+## Create Github Branches for Staging and Dev
+ 
+* Navigate to the main page of your repository 
+* Create a "dev" and "staging" branche from the master Branche, to do so click on the Master Branche Button on the main page
+  of your repository, then click view all branches, click on the New Branche button. 
+ 
+ 
 ## Set Workflow Variables
 
 * Navigate to the home of your Github Repository
-* Change Current Branche to “Dev”
+* Change Current Branche to “dev”
 
    <img src="images/pasted image 0 (33).png" width="150" height="50" />
 <br>
