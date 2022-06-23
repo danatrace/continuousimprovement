@@ -26,6 +26,11 @@ jobs:
        ## Create Custom Metric in Dynatrace for Release Evaluation Score
       - name: create custom metric
         run: |
+            sudo yum update -y
+            sudo yum install git -y
+            sudo yum install curl -y
+            sudo yum install jq -y
+            sudo yum install tree -y        
             curl -X PUT ${{ secrets.DT_API_URL }}/v1/timeseries/custom:releaseevaluationscore -H "Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}" -H "Content-Type: application/json" --data-binary @- <<DATA
             {
                 "timeseriesId": "custom:releaseevaluationscore",
@@ -99,7 +104,7 @@ jobs:
             chmod +x monaco
             # deploy repo folder
             sudo mv monaco /usr/local/bin/
-            monaco --environments=environments.yaml
+            monaco --environments=environments.yaml -p demo
             
       
       
@@ -115,11 +120,6 @@ jobs:
       - name: Install k3s on AWS linux
         run: |
           KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-          sudo yum update -y
-          sudo yum install git -y
-          sudo yum install curl -y
-          sudo yum install jq -y
-          sudo yum install tree -y
           cd /home/ec2-user/
           curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 64
           
