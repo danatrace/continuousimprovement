@@ -11,12 +11,6 @@ to Quickly Test or Demo the Slo Evaluation Process from Dev to Production withou
 having to wait hours for a delivery step like Testing to complete. <br>
 <br>
 
-|  Scenario 1 (All Slo Evaluations Succeed)     | 
-| ----------- | 
-| New Code is pushed to the Dev Branch, which automatically starts the Build/Deployment/Test/Slo-evaluation Process (Github Actions) and provides updates in a Feedback loop (Github Project) If the Evaluation was positive the dev branche will be merged into the staging branche, which automatically activates the Build/Deployment/Test/Slo-evaluation Process into the Staging environment. If the Slo Evaluation is Positive the staging Workflow waits for approval to merge the staging branche into Production (in our scenario the Master branche must always be identical to what is currently deployed in Prod). On Approval (Manually Checking Results of the Evaluation) the staging branche will be merged into the master branche and automatically activate the Deployment info Production where before deploying we run a Pre-Evaluation/Health check of our Production Environment to see if its ready to be deployed into. if the evaluation is Positive our code will be deployed to production. Post Production Deployment we check again if the Slos are still valid with another SLO Evaluation   
-
-|  Scenario 2 (Slo Evaluation Fails in Dev)     | 
-| ----------- | 
 
 # Prerequisites  
 <br>
