@@ -1,6 +1,6 @@
 # Continuous improvement from Dev to Production
 
- <img src="images/CIdemo.jpg" width="300" height="230" />
+ <img src="images/CIdemo.jpg" width="600" height="600" />
 
 
 <br>
