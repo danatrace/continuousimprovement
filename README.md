@@ -446,9 +446,17 @@ Here the one liner for the second wehbook
 
 
 ## Follow Initial Demo Workflow Run
+The Sandbox Demo has some builtin functions to play through different scenearios.
+The Functions are controlled by the commit message.
+Note! A demo in this Sandbox is always started by making a change to the dev branch, this activates the deployment workflows
+in a true gitops fasion
 
-
-
+|  Commitmsg   | Functionality | 
+| ----------- | ----------- | 
+| demo first | Used for the very first run after installation, used to initialize the demo and test if everything works. The Workflows take significantly longer during the initial run and should not be seen as a demo but part of the installation. This only needs to be done the very first time the demo is run after the installation 
+| demo | All SLO evaluations in all stages will succeed! The Demo Deploys the new code to Dev, then runs an slo evaluation, the evaluation succeeds and merges the dev branche into the staging branche, which activates the staging deployment workflow, here we deploy to staging, run another evaluation, the evaluation succceeds and the workflow waits for approval. Approval of the workflow will merge the staging branche into the production branche and start deployment to production where first we check if Production is ready to be deployed to by running a pre deployment evaluation, the evaluation succeeds and the deployment to production succeeds. after the deployment to production we run another last slo evaluation to make sure our new changes run smoothly in production.
+| demo faildev | the slo evaluation in dev will fail with High CPU and Memory usage, this will crate an issue with a link to the root cause of the problem, we click the link, identify and fix the problem. This is meant to show the advantages Dynatrace SLO evaluation has for Dev, Automatically Identify issues based on slos and provide a fast response with the root cause so the problem can be identified and fixed fast!  | 
+| demo failstaging | the slo evaluation in dev will be successful but fail in staging, due to the slo failing the new change is rolled back and an issue created with a link to the root cause of the problem in dynatrace. However since the problem is found in staging we have more people on board that will be notified about the issue. We most likely will have Dev, QA and the Release Manager made aware of the Problem.
 
 
 
