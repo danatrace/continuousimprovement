@@ -460,8 +460,37 @@ in a true gitops fashion
 | demo failstaging | the slo evaluation in dev will be successful but fail in staging, due to the slo failing the new change is rolled back and an issue created with a link to the root cause of the problem in dynatrace. However since the problem is found in staging we have more people on board that will be notified about the issue. We most likely will have Dev, QA and the Release Manager made aware of the Problem.
 
 
+##Initial Demo Workflow Run
 
-
+After commiting the changes above with the commit msg "demo first" the "dev" deployment workflow will start.
+* Go to the main page of your repsitory
+* Click on Actions
+* Inside Actions and Workflows click on "Demo FIrst"
+ 
+This will take you to the Dev Workflow Monitor that shows you step by step what the deployment is currently working on.
+ 
+The First Task in the Workflow creates a Tracking issue to be seen as feedback loop, every action positive or negative will be updated to the Documentation Issue
+so that we always have an overview of where we currently stand.
+ 
+Once the Task is completed, it will show a link to the Project where it has created the Documentation issue.
+To make sure the Demo installation works properly please take the follwing steps:
+ 
+* Click the link in the first Task of the workflow, this will take you to the project board.
+* On the Project board there was an issue created called "Deployment/Slo Evaluation Dev", click on the Title of the Issue, this will open the details overview which
+  contains a link to your running Workflow Montitor, The Dynatrace Dev Slo Evaluation Dashbaord and a link to Dynatrace Cloud automation. 
+  Please check if all of these 3 links work.
+ 
+ * Go back to the running workflow and wait until Deploy-Application has been completed, after completion this task shows a link to the deployed application.
+   Please check if the link works
+ 
+ * After the Deply-Application Task has completed the "run-test" action will start, this action will run for about 10 min in the first initial demo run and
+   becomes significantly faster when running the demo again later on
+ 
+ * After Run-Test has finised the Dynatrace-Slo-Evaluation tasks starts and will take about 3 minutes, once completed the final task merges the dev branche into the
+   staging branche which activates the Staging deployment workflow. You can get to this workflow by click on the link that the "On-Success-Merge" taks displays after completion.
+ 
+ 
+ 
 
 
 
