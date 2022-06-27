@@ -14,7 +14,8 @@ Testing are not necessarily best practise, they were designed to serve the Purpo
 to Quickly Test or Demo the Slo Evaluation Process from Dev to Production without <br>
 having to wait hours for a delivery step like Testing to complete. <br>
 <br>
-
+# Video
+There is a fast paced video available of the installation under the following link: ![Install Video]](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABh3UDrD-G3ofym2hEhsvg7A?e=GDPfnL)
 
 # Prerequisites  
 <br>
