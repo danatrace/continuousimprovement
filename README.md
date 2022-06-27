@@ -37,7 +37,7 @@ Note! You can save some time if you collect all the needed URLs and Api-Tokens P
 <br>
 
 # Video
-There is a fast paced video available of the installation under the following link: [Install Video]([https://link-url-here.org](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABh3UDrD-G3ofym2hEhsvg7A?e=GDPfnL)
+There is a fast paced video available of the installation under the following link: [Install Video]([https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABh3UDrD-G3ofym2hEhsvg7A?e=GDPfnL)]
 
 # Sandbox Setup
 <br>
