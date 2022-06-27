@@ -441,9 +441,9 @@ Here the one liner for the second wehbook
 | DT_URL | Dynatrace URL | 
 | DOCKER_TAG | Docker tag of your Docker hub repo created in the first step 
 
-
+<br>
 * Commit the change with the following commit message “demo first” This will start the Demo Workflow and Deploy the Initial Application to Dev, Staging
-
+<br>
 
 ## Follow Initial Demo Workflow Run
 The Sandbox Demo has some builtin functions to play through different scenearios. The Functions are controlled by the commit message. <br>
