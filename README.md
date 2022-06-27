@@ -446,11 +446,12 @@ Here the one liner for the second wehbook
 
 
 ## Follow Initial Demo Workflow Run
-The Sandbox Demo has some builtin functions to play through different scenearios.
-The Functions are controlled by the commit message.
-Note! A demo in this Sandbox is always started by making a change to the dev branch, this activates the deployment workflows
-in a true gitops fasion
-
+The Sandbox Demo has some builtin functions to play through different scenearios. The Functions are controlled by the commit message. <br>
+Note! A demo in this Sandbox is always started by making a change to the dev branch, this activates the deployment workflows <br>
+in a true gitops fashion
+<br>
+<br>
+ 
 |  Commitmsg   | Functionality | 
 | ----------- | ----------- | 
 | demo first | Used for the very first run after installation, used to initialize the demo and test if everything works. The Workflows take significantly longer during the initial run and should not be seen as a demo but part of the installation. This only needs to be done the very first time the demo is run after the installation 
