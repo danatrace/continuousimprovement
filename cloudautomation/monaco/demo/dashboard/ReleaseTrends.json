@@ -325,7 +325,7 @@
     "width": 342
    },
    "configured": true,
-   "markdown": "### Environments\n\n+ [ 🔧 Dev](http://{{ .Env.PUB_IP }}:8000/) \n+ [ 🚦 Staging](http://{{ .Env.PUB_IP }}:8001/) \n+ [ 💵 Prod](http://{{ .Env.PUB_IP }}:8002/) \n+ [ 🚢 Kubernetes Cluster](/ui/kubernetes/{{Env.K8S_ID}}) \n",
+   "markdown": "### Environments\n\n+ [ 🔧 Dev](http://{{ .Env.PUB_IP }}:8000/) \n+ [ 🚦 Staging](http://{{ .Env.PUB_IP }}:8001/) \n+ [ 💵 Prod](http://{{ .Env.PUB_IP }}:8002/) \n+ [ 🚢 Kubernetes Cluster](/ui/kubernetes) \n",
    "name": "Markdown",
    "nameSize": null,
    "tileFilter": {
