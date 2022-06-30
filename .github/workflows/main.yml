@@ -67,7 +67,6 @@ jobs:
            export GH_REPO=${{ github.repository }}
            export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}    
            export CA_URL=${{secrets.DT_CA_URL}}
-           export K8S_ID=$(kubectl get namespace kube-system --output jsonpath={.metadata.uid})
            cd cloudautomation/monaco
            curl -L https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/download/v1.7.0/monaco-linux-amd64 -o monaco
            chmod +x monaco
@@ -100,7 +99,6 @@ jobs:
             export GH_REPO=${{ github.repository }}
             export DT_API_TOKEN=${{ secrets.DT_API_TOKEN }}
             export CA_URL=${{secrets.DT_CA_URL}}
-            export K8S_ID=$(kubectl get namespace kube-system --output jsonpath={.metadata.uid})
             cd cloudautomation/monaco
             curl -L https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/download/v1.7.0/monaco-linux-amd64 -o monaco
             chmod +x monaco
