@@ -36,9 +36,12 @@ Note! You can save some time if you collect all the needed URLs and Api-Tokens P
 
 <br>
 
-# Video
+# Videos
 There is a fast paced video available of the sanxbox installation under the following link: <br>
-[Sandbox Install Video](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABh3UDrD-G3ofym2hEhsvg7A?e=GDPfnL)
+[Sandbox Install Video](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABh3UDrD-G3ofym2hEhsvg7A?e=GDPfnL) <br>
+
+The Sandbox Demo in action: <br>
+[Sandbox Demo](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ESq6-0d4v0ZFjnshNOL6qukBenmVuWrxhu_ZNYH4Nv6daA?e=gW2dsL) <br>
 
 # Sandbox Setup
 <br>
