@@ -446,6 +446,7 @@ Here the one liner for the second wehbook
 
 
 * Commit the change with the following commit message “demo first” This will start the Demo Workflow and Deploy the Initial Application to Dev, Staging
+   <img src="images/demofirst.png" width="300" height="250" />
 <br>
 
 ## Follow Initial Demo Workflow Run
