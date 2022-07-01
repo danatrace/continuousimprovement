@@ -62,7 +62,7 @@ The Sandbox Demo in action: <br>
 <br>
 
 * Login to your GitHub account.
-* Navigate to the https://github.com/danatrace/continuousimprovement repo.
+* Navigate to the https://github.com/danatrace/continuousimprovement repository.
 * Click the "use this Template Button", give it any name that you would like.
 * Now, navigate to your new repository. 
 
