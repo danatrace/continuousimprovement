@@ -31,8 +31,8 @@ having to wait hours for a delivery step like Testing to complete. <br>
 | Github  | Account, Personal Access Token      |
 
 <br>
-Note! You can save some time if you collect all the needed URLs and Api-Tokens Pre Sandbox Installation.
-      Store them safely with keepaas https://keepass.info/
+Note! You can save some time if you collect all the needed URLs and Api-Tokens Pre Sandbox Installation.<br>
+Store them safely with keepaas https://keepass.info/
 
 <br>
 
