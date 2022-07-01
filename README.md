@@ -37,7 +37,7 @@ Store them safely with keepaas https://keepass.info/
 <br>
 
 # Videos
-There is a fast paced video available of the sanxbox installation under the following link: <br>
+There is a fast paced video available that goes through the sandbox setup below under the following link: <br>
 [Sandbox Install Video](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABh3UDrD-G3ofym2hEhsvg7A?e=GDPfnL) <br>
 
 The Sandbox Demo in action: <br>
