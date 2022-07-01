@@ -449,19 +449,19 @@ Here the one liner for the second wehbook
 <br>
 
 ## Follow Initial Demo Workflow Run
-Commiting the changes with the commit message "demo first" will start Initial Demo run.
-Initial Demo run: The first time you kick off the demo.
-The first time you kick off the demo there are some initialization steps done and the runs take
-significantly longer than when running the demo scenarios later on.
+Commiting the changes with the commit message "demo first" will start Initial Demo run. <br>
+Initial Demo run: The first time you kick off the demo. <br>
+The first time you kick off the demo there are some initialization steps done and the runs take <br>
+significantly longer than when running the demo scenarios later on. <br>
 
 The Initial Demo run will 
 * Run the Deployment to dev, have a successful slo evaluation and then merges the dev with the staging branche which kick off
 * The Staging Deployment that will also have a successful slo evaluation run and wait for your approval, after you approve
 * the Production Workflow will run
 
-You can use the initial demo run to check if everything works.
+You can use the initial demo run to check if everything works. <br>
 How this is done can be seen in the following video: [Inital Demo Run](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ESkzogAqeNREg_1vNaIZhkABf5gTg5qEQsgAClgTuFm3QQ?e=twQBtt) <br>
-
+<br>
 
 ## Demo Functions
 The Sandbox Demo has some builtin functions to play through different scenearios. The Functions are controlled by the commit message. <br>
