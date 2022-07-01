@@ -450,7 +450,6 @@ Here the one liner for the second wehbook
 
 ## Follow Initial Demo Workflow Run
 Commiting the changes with the commit message "demo first" will start Initial Demo run. <br>
-Initial Demo run: The first time you kick off the demo. <br>
 The first time you kick off the demo there are some initialization steps done and the runs take <br>
 significantly longer than when running the demo scenarios later on. <br>
 
