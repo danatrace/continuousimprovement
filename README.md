@@ -46,7 +46,7 @@ The Sandbox Demo in action: <br>
 # Sandbox Setup
 <br>
 
-## Create a repository in Docker Hub
+## Create a Repository in Docker Hub
 <br>
 
 * Log in to hub.docker.com.
@@ -57,7 +57,7 @@ The Sandbox Demo in action: <br>
   <img src="images/index-create-repo.png" width="300" height="230" />
 <br>
 
-## Create a Repo from Template
+## Create a Github Repository from Template
 
 <br>
 
