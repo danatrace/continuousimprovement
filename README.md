@@ -45,7 +45,7 @@ The Sandbox Demo in action: <br>
 
 # Sandbox Setup
 <br>
-The Sandbo Setup takes about 15 - 20min <br>
+The Sandbox Setup takes about 15 - 20min <br>
 Most of the installation is Automated, there are just a few manual steps to take <br>
 like settings variables and secrets. <br> <br>
 
