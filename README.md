@@ -449,62 +449,33 @@ Here the one liner for the second wehbook
 <br>
 
 ## Follow Initial Demo Workflow Run
+Commiting the changes with the commit message "demo first" will start Initial Demo run.
+Initial Demo run: The first time you kick off the demo.
+The first time you kick off the demo there are some initialization steps done and the runs take
+significantly longer than when running the demo scenarios later on.
+
+The Initial Demo run will 
+* Run the Deployment to dev, have a successful slo evaluation and then merges the dev with the staging branche which kick off
+* The Staging Deployment that will also have a successful slo evaluation run and wait for your approval, after you approve
+* the Production Workflow will run
+
+You can use the initial demo run to check if everything works.
+How this is done can be seen in the following video: [Inital Demo Run](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ESkzogAqeNREg_1vNaIZhkABf5gTg5qEQsgAClgTuFm3QQ?e=twQBtt) <br>
+
+
+## Demo Functions
 The Sandbox Demo has some builtin functions to play through different scenearios. The Functions are controlled by the commit message. <br>
 Note! A demo in this Sandbox is always started by making a change to the dev branch, this activates the deployment workflows <br>
 in a true gitops fashion
 <br>
 <br>
- 
+
+
 |  Commitmsg   | Functionality | 
 | ----------- | ----------- | 
 | demo first | Used for the very first run after installation, used to initialize the demo and test if everything works. The Workflows take significantly longer during the initial run and should not be seen as a demo but part of the installation. This only needs to be done the very first time the demo is run after the installation 
 | demo | All SLO evaluations in all stages will succeed! The Demo Deploys the new code to Dev, then runs an slo evaluation, the evaluation succeeds and merges the dev branche into the staging branche, which activates the staging deployment workflow, here we deploy to staging, run another evaluation, the evaluation succceeds and the workflow waits for approval. Approval of the workflow will merge the staging branche into the production branche and start deployment to production where first we check if Production is ready to be deployed to by running a pre deployment evaluation, the evaluation succeeds and the deployment to production succeeds. after the deployment to production we run another last slo evaluation to make sure our new changes run smoothly in production.
 | demo faildev | the slo evaluation in dev will fail with High CPU and Memory usage, this will crate an issue with a link to the root cause of the problem, we click the link, identify and fix the problem. This is meant to show the advantages Dynatrace SLO evaluation has for Dev, Automatically Identify issues based on slos and provide a fast response with the root cause so the problem can be identified and fixed fast!  | 
 | demo failstaging | the slo evaluation in dev will be successful but fail in staging, due to the slo failing the new change is rolled back and an issue created with a link to the root cause of the problem in dynatrace. However since the problem is found in staging we have more people on board that will be notified about the issue. We most likely will have Dev, QA and the Release Manager made aware of the Problem.
-
-
-##Initial Demo Workflow Run
-
-After commiting the changes above with the commit msg "demo first" the "dev" deployment workflow will start.
-* Go to the main page of your repsitory
-* Click on Actions
-* Inside Actions and Workflows click on "Demo FIrst"
- 
-This will take you to the Dev Workflow Monitor that shows you step by step what the deployment is currently working on.
- 
-The First Task in the Workflow creates a Tracking issue to be seen as feedback loop, every action positive or negative will be updated to the Documentation Issue
-so that we always have an overview of where we currently stand.
- 
-Once the Task is completed, it will show a link to the Project where it has created the Documentation issue.
-To make sure the Demo installation works properly please take the follwing steps:
- 
-* Click the link in the first Task of the workflow, this will take you to the project board.
-* On the Project board there was an issue created called "Deployment/Slo Evaluation Dev", click on the Title of the Issue, this will open the details overview which
-  contains a link to your running Workflow Montitor, The Dynatrace Dev Slo Evaluation Dashbaord and a link to Dynatrace Cloud automation. 
-  Please check if all of these 3 links work.
- 
- * Go back to the running workflow and wait until Deploy-Application has been completed, after completion this task shows a link to the deployed application.
-   Please check if the link works
- 
- * After the Deply-Application Task has completed the "run-test" action will start, this action will run for about 10 min in the first initial demo run and
-   becomes significantly faster when running the demo again later on
- 
- * After Run-Test has finised the Dynatrace-Slo-Evaluation tasks starts and will take about 3 minutes, once completed the final task merges the dev branche into the
-   staging branche which activates the Staging deployment workflow. You can get to this workflow by click on the link that the "On-Success-Merge" taks displays after completion.
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
 
 
