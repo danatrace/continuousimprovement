@@ -445,7 +445,7 @@ Here the one liner for the second wehbook
 | DOCKER_TAG | Docker tag of your Docker hub repo created in the first step 
 
 
-* Commit the change with the following commit message “demo first” This will start the Demo Workflow and Deploy the Initial Application to Dev, Staging <br>
+* Commit the change with the following commit message “demo first” This will start the Demo Workflow and Deploy the Initial Application to Dev, Staging <br> <br>
    <img src="images/demofirst.png" width="250" height="250" />
 <br>
 
