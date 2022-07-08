@@ -14,7 +14,7 @@
   "tilesNameSize": "medium"
  },
  "metadata": {
-  "clusterVersion": "1.243.146.20220615-081647",
+  "clusterVersion": "1.245.94.20220705-101739",
   "configurationVersions": [
    6
   ]
@@ -58,9 +58,11 @@
       "filterOperator": "AND",
       "filterType": null,
       "globalEntity": null,
-      "nestedFilters": []
+      "nestedFilters": [],
+      "relationship": null
      },
      "foldTransformation": null,
+     "generatedMetricSelector": "builtin:host.cpu.usage:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
      "id": "A",
      "limit": null,
      "metric": "builtin:host.cpu.usage",
@@ -158,124 +160,6 @@
   {
    "bounds": {
     "height": 152,
-    "left": 608,
-    "top": 38,
-    "width": 342
-   },
-   "configured": true,
-   "customName": "Host Memory used %;sli=host_mem;pass=\u003c20;warning=\u003c50;key=false",
-   "name": "Host Memory usg. (\u003c 30%) ................................;sli=host_mem;pass=\u003c20;warning=\u003c50;key=false",
-   "nameSize": null,
-   "queries": [
-    {
-     "enabled": true,
-     "filterBy": {
-      "criteria": [],
-      "entityAttribute": null,
-      "filter": null,
-      "filterOperator": "AND",
-      "filterType": null,
-      "globalEntity": null,
-      "nestedFilters": []
-     },
-     "foldTransformation": null,
-     "id": "A",
-     "limit": null,
-     "metric": "builtin:host.mem.usage",
-     "metricSelector": null,
-     "sortBy": null,
-     "spaceAggregation": "AVG",
-     "splitBy": [],
-     "timeAggregation": "DEFAULT"
-    }
-   ],
-   "queriesSettings": {
-    "foldAggregation": null,
-    "foldTransformation": null,
-    "resolution": ""
-   },
-   "tileFilter": {
-    "managementZone": null,
-    "timeframe": "-7d to now"
-   },
-   "tileType": "DATA_EXPLORER",
-   "visualConfig": {
-    "axes": {
-     "xAxis": {
-      "displayName": null,
-      "visible": true
-     },
-     "yAxes": []
-    },
-    "global": {
-     "hasTrendline": null,
-     "hideLegend": false,
-     "seriesType": null,
-     "theme": null,
-     "threshold": null
-    },
-    "graphChartSettings": {
-     "connectNulls": false
-    },
-    "heatmapSettings": {
-     "xAxisBuckets": null,
-     "yAxis": "VALUE",
-     "yAxisBuckets": null
-    },
-    "honeycombSettings": {
-     "showHive": true,
-     "showLabels": false,
-     "showLegend": true
-    },
-    "rules": [
-     {
-      "matcher": "A:",
-      "properties": {
-       "alias": null,
-       "color": "DEFAULT",
-       "seriesType": "LINE"
-      },
-      "seriesOverrides": [],
-      "unitTransform": "",
-      "valueFormat": "auto"
-     }
-    ],
-    "singleValueSettings": {
-     "linkTileColorToThreshold": true,
-     "showSparkLine": true,
-     "showTrend": true
-    },
-    "tableSettings": {
-     "isThresholdBackgroundAppliedToCell": false
-    },
-    "thresholds": [
-     {
-      "axisTarget": "LEFT",
-      "columnId": null,
-      "queryId": "",
-      "rules": [
-       {
-        "color": "#93060e",
-        "value": 50
-       },
-       {
-        "color": "#f5d30f",
-        "value": 20
-       },
-       {
-        "color": "#048855",
-        "value": 0
-       }
-      ],
-      "visible": true
-     }
-    ],
-    "type": "SINGLE_VALUE"
-   }
-  },
-  {
-   "bounds": {
-    "height": 152,
     "left": 950,
     "top": 38,
     "width": 342
@@ -294,9 +178,11 @@
       "filterOperator": "AND",
       "filterType": null,
       "globalEntity": null,
-      "nestedFilters": []
+      "nestedFilters": [],
+      "relationship": null
      },
      "foldTransformation": null,
+     "generatedMetricSelector": "builtin:host.cpu.load:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
      "id": "A",
      "limit": null,
      "metric": "builtin:host.cpu.load",
@@ -412,9 +298,11 @@
       "filterOperator": "AND",
       "filterType": null,
       "globalEntity": null,
-      "nestedFilters": []
+      "nestedFilters": [],
+      "relationship": null
      },
      "foldTransformation": null,
+     "generatedMetricSelector": "builtin:host.disk.avail:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
      "id": "A",
      "limit": null,
      "metric": "builtin:host.disk.avail",
@@ -530,9 +418,11 @@
       "filterOperator": "AND",
       "filterType": null,
       "globalEntity": null,
-      "nestedFilters": []
+      "nestedFilters": [],
+      "relationship": null
      },
      "foldTransformation": null,
+     "generatedMetricSelector": "builtin:host.cpu.usage:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
      "id": "A",
      "limit": null,
      "metric": "builtin:host.cpu.usage",
@@ -551,9 +441,11 @@
       "filterOperator": null,
       "filterType": null,
       "globalEntity": null,
-      "nestedFilters": []
+      "nestedFilters": [],
+      "relationship": null
      },
      "foldTransformation": null,
+     "generatedMetricSelector": "builtin:host.mem.usage:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
      "id": "B",
      "limit": null,
      "metric": "builtin:host.mem.usage",
@@ -572,9 +464,11 @@
       "filterOperator": null,
       "filterType": null,
       "globalEntity": null,
-      "nestedFilters": []
+      "nestedFilters": [],
+      "relationship": null
      },
      "foldTransformation": null,
+     "generatedMetricSelector": "builtin:tech.generic.cpu.usage:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
      "id": "C",
      "limit": null,
      "metric": "builtin:tech.generic.cpu.usage",
@@ -593,9 +487,11 @@
       "filterOperator": null,
       "filterType": null,
       "globalEntity": null,
-      "nestedFilters": []
+      "nestedFilters": [],
+      "relationship": null
      },
      "foldTransformation": null,
+     "generatedMetricSelector": "builtin:tech.generic.mem.usage:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
      "id": "D",
      "limit": null,
      "metric": "builtin:tech.generic.mem.usage",
@@ -784,6 +680,7 @@
      "enabled": true,
      "filterBy": null,
      "foldTransformation": null,
+     "generatedMetricSelector": "ext:releaseevaluationscore:splitBy(\"Application\"):filter(eq(\"Application\",\"simplenodeservice-production-DG\")):avg",
      "id": "A",
      "limit": null,
      "metric": null,
@@ -923,6 +820,7 @@
      "enabled": true,
      "filterBy": null,
      "foldTransformation": null,
+     "generatedMetricSelector": "ext:releaseevaluationscore:splitBy(\"Evaluationtime\",\"Releaseversion\",\"Application\"):avg:sort(dimension(\"Evaluationtime\",descending)):filter(eq(\"Application\",\"simplenodeservice-production-DG\"))",
      "id": "A",
      "limit": null,
      "metric": null,
@@ -1015,6 +913,126 @@
        },
        {
         "color": "#c41425",
+        "value": 0
+       }
+      ],
+      "visible": true
+     }
+    ],
+    "type": "SINGLE_VALUE"
+   }
+  },
+  {
+   "bounds": {
+    "height": 152,
+    "left": 608,
+    "top": 38,
+    "width": 342
+   },
+   "configured": true,
+   "customName": "Host Memory used %;sli=host_mem;pass=\u003c20;warning=\u003c50;key=false",
+   "name": "Host Memory usg. (\u003c 40%) ................................;sli=host_mem;pass=\u003c40;warning=\u003c50;key=false",
+   "nameSize": null,
+   "queries": [
+    {
+     "enabled": true,
+     "filterBy": {
+      "criteria": [],
+      "entityAttribute": null,
+      "filter": null,
+      "filterOperator": "AND",
+      "filterType": null,
+      "globalEntity": null,
+      "nestedFilters": [],
+      "relationship": null
+     },
+     "foldTransformation": null,
+     "generatedMetricSelector": "builtin:host.mem.usage:splitBy():avg:auto:sort(value(avg,descending)):limit(10)",
+     "id": "A",
+     "limit": null,
+     "metric": "builtin:host.mem.usage",
+     "metricSelector": null,
+     "sortBy": null,
+     "spaceAggregation": "AVG",
+     "splitBy": [],
+     "timeAggregation": "DEFAULT"
+    }
+   ],
+   "queriesSettings": {
+    "foldAggregation": null,
+    "foldTransformation": null,
+    "resolution": ""
+   },
+   "tileFilter": {
+    "managementZone": null,
+    "timeframe": "-7d to now"
+   },
+   "tileType": "DATA_EXPLORER",
+   "visualConfig": {
+    "axes": {
+     "xAxis": {
+      "displayName": null,
+      "visible": true
+     },
+     "yAxes": []
+    },
+    "global": {
+     "hasTrendline": null,
+     "hideLegend": false,
+     "seriesType": null,
+     "theme": null,
+     "threshold": null
+    },
+    "graphChartSettings": {
+     "connectNulls": false
+    },
+    "heatmapSettings": {
+     "xAxisBuckets": null,
+     "yAxis": "VALUE",
+     "yAxisBuckets": null
+    },
+    "honeycombSettings": {
+     "showHive": true,
+     "showLabels": false,
+     "showLegend": true
+    },
+    "rules": [
+     {
+      "matcher": "A:",
+      "properties": {
+       "alias": null,
+       "color": "DEFAULT",
+       "seriesType": null
+      },
+      "seriesOverrides": [],
+      "unitTransform": null,
+      "valueFormat": null
+     }
+    ],
+    "singleValueSettings": {
+     "linkTileColorToThreshold": true,
+     "showSparkLine": true,
+     "showTrend": true
+    },
+    "tableSettings": {
+     "isThresholdBackgroundAppliedToCell": false
+    },
+    "thresholds": [
+     {
+      "axisTarget": "LEFT",
+      "columnId": null,
+      "queryId": "",
+      "rules": [
+       {
+        "color": "#93060e",
+        "value": 50
+       },
+       {
+        "color": "#f5d30f",
+        "value": 40
+       },
+       {
+        "color": "#048855",
         "value": 0
        }
       ],
