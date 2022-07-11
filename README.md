@@ -38,7 +38,7 @@ Store them safely with keepaas https://keepass.info/
 
 # Videos
 There is a fast paced video available that goes through the sandbox setup below under the following link: <br>
-[Sandbox Install Video](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABh3UDrD-G3ofym2hEhsvg7A?e=GDPfnL) <br>
+[Sandbox Install Video](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ES5iB75D4UdIhawT1EYO6tABrj_Mgo43f_-fhPNS-W9b7Q?e=DlbEQA) <br>
 
 The Sandbox Demo in action: <br>
 [Sandbox Demo](https://dynatrace-my.sharepoint.com/:v:/p/daniel_braaf/ESq6-0d4v0ZFjnshNOL6qukBenmVuWrxhu_ZNYH4Nv6daA?e=gW2dsL) <br>
